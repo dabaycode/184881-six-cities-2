@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Дмитрий Байко](https://up.htmlacademy.ru/react/2/user/184881).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Фаллер](https://htmlacademy.ru/profile/id505933https://htmlacademy.ru/profile/id505933).
 
 ---
 
