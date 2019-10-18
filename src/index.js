@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import App from 'Components/app/app';
 
 const init = () => {
