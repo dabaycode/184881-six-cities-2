@@ -29,14 +29,17 @@ module.exports = {
       Components: path.resolve(__dirname, `src/components/`)
     },
     modules: [
-        'node_modules'
+        'node_modules',
+        path.resolve(path.join(__dirname, `public`))
     ],
     extensions: [`.js`, `.jsx`, `.ts`, `.tsx`, `.webm`]
   },
   devtool: `source-map`,
   plugins: [
     new webpack.ProvidePlugin({
-      React: 'react',
+      React: `react`,
+      ReactDOM: `react-dom`,
+      cx: `classnames`
     }),
   ]
 };
