@@ -38,7 +38,6 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       React: `react`,
-      ReactDOM: `react-dom`,
       cx: `classnames`
     }),
   ]
