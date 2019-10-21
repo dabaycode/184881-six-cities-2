@@ -1,7 +1,8 @@
+import React from 'react';
 import PropTypes from "prop-types";
 
 const Main = (props) => {
-  const {rentList} = props;
+  const {rentList, onClickHead} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -9,7 +10,7 @@ const Main = (props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link header__logo-link--active">
+              <a className="header__logo-link header__logo-link--active" onClick={onClickHead}>
                 <img
                   className="header__logo"
                   src="img/logo.svg"
@@ -144,7 +145,8 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  rentList: PropTypes.array
+  rentList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onClickHead: PropTypes.func
 };
 
 export default Main;
