@@ -14,32 +14,7 @@ const mockCard = {
   mark: `Premium`
 };
 
-expect.extend({
-  toBeCorrectIncomeData(data) {
-
-    let pass = false;
-
-    if (data) {
-      pass = false;
-    } else {
-      pass = false;
-    }
-
-    if (pass) {
-      return {
-        message: () => `Data is correct`,
-        pass: true
-      };
-    } else {
-      return {
-        message: () => `Data is not correct`,
-        pass: false
-      };
-    }
-  }
-});
-
-it(`Heandler run when place card on hover`, () => {
+it(`Heandler run when correct data`, () => {
   const hoverHandler = jest.fn((card) => {
     return card;
   });
@@ -54,5 +29,13 @@ it(`Heandler run when place card on hover`, () => {
     onCardHover={() => hoverHandler(mockCard)}/>);
   const card = placeOfferCard.find(`.place-card`);
   card.simulate(`mouseover`);
-  expect(hoverHandler).toBeCorrectIncomeData(mockCard);
+  expect(hoverHandler).toBeCalledWith(expect.objectContaining({
+    title: expect.any(String),
+    image: expect.any(String),
+    price: expect.any(Number),
+    rating: expect.any(Number),
+    type: expect.any(String),
+    mark: expect.any(String)
+  }));
+
 });
