@@ -1,10 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import App from "./app";
+import mockCards from '../../mocks/offers';
 
-it(`App correctly renders with 1 apartment for rent after relaunch`, () => {
+it(`App correctly renders with mock apartments for rent after relaunch`, () => {
   const tree = renderer
-    .create(<App rentList={[`Beautiful & luxurious apartment at great location`]}/>)
+    .create(<App placeCards={mockCards}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

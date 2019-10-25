@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 import Main from "../main/main";
 
 const App = (props) => {
-  const {rentList} = props;
+  const {placeCards} = props;
 
   return (
-    <Main rentList={rentList} onClickHead = {() => {}}/>
+    <Main placeCards={placeCards} onClickHead = {() => {}}/>
   );
 
 };
 
 App.propTypes = {
-  rentList: PropTypes.arrayOf(PropTypes.string).isRequired
+  placeCards: PropTypes.array.isRequired,
 };
 
 export default App;
