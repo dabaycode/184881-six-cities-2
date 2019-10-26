@@ -1,18 +1,22 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import Main from "../main/main";
+import PlaceCardDetail from '../place-card-detail/place-card-detail'
+
+const getPageScreen = (props) => {
+  const {placeCards} = props;
+  switch (location.pathname) {
+    case `/`:
+      return <Main placeCards={placeCards} onClickHead= {() => {}}/>;
+    case `/offer`:
+      return <PlaceCardDetail placeCard={placeCards[0]}/>;
+  }
+}
 
 const App = (props) => {
-  const {placeCards} = props;
-
   return (
-    <Main placeCards={placeCards} onClickHead = {() => {}}/>
+    <React.Fragment>{getPageScreen(props)}</React.Fragment>
   );
 
-};
-
-App.propTypes = {
-  placeCards: PropTypes.array.isRequired,
 };
 
 export default App;
