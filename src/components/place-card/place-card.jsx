@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
   const {
+    id,
     title,
     image,
     price,
@@ -49,7 +50,7 @@ const PlaceCard = (props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <a href={`/offer/` + id}>{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -58,6 +59,7 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

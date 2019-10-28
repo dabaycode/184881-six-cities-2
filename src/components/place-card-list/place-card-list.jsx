@@ -23,6 +23,7 @@ class PlaceCardList extends React.PureComponent {
       <div className="cities__places-list places__list tabs__content">
         {cards.map((item, index) => <PlaceCard
           key={item.title + index}
+          id={item.id}
           title={item.title}
           image={item.image}
           price={item.price}
@@ -40,6 +41,7 @@ export default PlaceCardList;
 
 PlaceCardList.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

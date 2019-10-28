@@ -44,7 +44,7 @@ const PlaceCardDetail = (props) => {
                 }}/>
                 <span className="visually-hidden">Rating</span>
               </div>
-              <span className="property__rating-value rating__value">4.8</span>
+              <span className="property__rating-value rating__value">{(rating / 100 * 5).toFixed(1)}</span>
             </div>
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
@@ -103,7 +103,7 @@ const PlaceCardDetail = (props) => {
                   className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
                   <img
                     className="property__avatar user__avatar"
-                    src="img/avatar-angelina.jpg"
+                    src="/img/avatar-angelina.jpg"
                     width={74}
                     height={74}
                     alt="Host avatar"/>
@@ -137,7 +137,7 @@ const PlaceCardDetail = (props) => {
                     <div className="reviews__avatar-wrapper user__avatar-wrapper">
                       <img
                         className="reviews__avatar user__avatar"
-                        src="img/avatar-max.jpg"
+                        src="/img/avatar-max.jpg"
                         width={54}
                         height={54}
                         alt="Reviews avatar"/>
@@ -268,7 +268,7 @@ const PlaceCardDetail = (props) => {
                 <a href="#">
                   <img
                     className="place-card__image"
-                    src="img/room.jpg"
+                    src="/img/room.jpg"
                     width={260}
                     height={200}
                     alt="Place image"/>
@@ -308,7 +308,7 @@ const PlaceCardDetail = (props) => {
                 <a href="#">
                   <img
                     className="place-card__image"
-                    src="img/apartment-02.jpg"
+                    src="/img/apartment-02.jpg"
                     width={260}
                     height={200}
                     alt="Place image"/>
@@ -346,7 +346,7 @@ const PlaceCardDetail = (props) => {
                 <a href="#">
                   <img
                     className="place-card__image"
-                    src="img/apartment-03.jpg"
+                    src="/img/apartment-03.jpg"
                     width={260}
                     height={200}
                     alt="Place image"/>
