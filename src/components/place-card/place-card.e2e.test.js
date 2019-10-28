@@ -1,9 +1,4 @@
-import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import PlaceCard from './place-card';
-
-Enzyme.configure({adapter: new Adapter()});
 
 const mockCard = {
   title: `Beautiful & luxurious apartment at great location`,
