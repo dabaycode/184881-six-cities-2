@@ -95,7 +95,7 @@ exports[`Place card list correctly renders with 2 cards 1`] = `
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/offer/1"
         >
           Beautiful & luxurious apartment at great location
         </a>
@@ -198,7 +198,7 @@ exports[`Place card list correctly renders with 2 cards 1`] = `
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/offer/2"
         >
           Wood and stone place
         </a>

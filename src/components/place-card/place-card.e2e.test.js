@@ -6,6 +6,7 @@ import PlaceCard from './place-card';
 Enzyme.configure({adapter: new Adapter()});
 
 const mockCard = {
+  id: 1,
   title: `Beautiful & luxurious apartment at great location`,
   image: `img/apartment-01.jpg`,
   price: 80,
@@ -20,6 +21,7 @@ it(`Heandler run when correct data`, () => {
   });
 
   const placeOfferCard = shallow(<PlaceCard
+    id={mockCard.id}
     title={mockCard.title}
     image={mockCard.image}
     price={mockCard.price}
@@ -30,6 +32,7 @@ it(`Heandler run when correct data`, () => {
   const card = placeOfferCard.find(`.place-card`);
   card.simulate(`mouseover`);
   expect(hoverHandler).toBeCalledWith(expect.objectContaining({
+    id: expect.any(Number),
     title: expect.any(String),
     image: expect.any(String),
     price: expect.any(Number),

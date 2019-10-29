@@ -5,7 +5,7 @@ import mockCards from '../../mocks/offers';
 
 it(`App correctly renders with mock apartments for rent after relaunch`, () => {
   const tree = renderer
-    .create(<App placeCards={mockCards}/>)
+    .create(<App placeCards={mockCards} onClickHead={() => {}}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

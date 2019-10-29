@@ -92,7 +92,7 @@ exports[`Place card correctly renders with 1 apartment for rent after relaunch 1
       className="place-card__name"
     >
       <a
-        href="#"
+        href="/offer/1"
       >
         Beautiful & luxurious apartment at great location
       </a>
