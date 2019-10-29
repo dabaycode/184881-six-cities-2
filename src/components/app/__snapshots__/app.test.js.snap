@@ -245,7 +245,7 @@ exports[`App correctly renders with mock apartments for rent after relaunch 1`] 
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="/img/apartment-01.jpg"
                     width="260"
                   />
                 </a>
@@ -315,7 +315,7 @@ exports[`App correctly renders with mock apartments for rent after relaunch 1`] 
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
                   >
                     Beautiful & luxurious apartment at great location
                   </a>
@@ -348,7 +348,7 @@ exports[`App correctly renders with mock apartments for rent after relaunch 1`] 
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-02.jpg"
+                    src="/img/apartment-02.jpg"
                     width="260"
                   />
                 </a>
@@ -418,7 +418,7 @@ exports[`App correctly renders with mock apartments for rent after relaunch 1`] 
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
                   >
                     Wood and stone place
                   </a>
@@ -445,7 +445,7 @@ exports[`App correctly renders with mock apartments for rent after relaunch 1`] 
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-03.jpg"
+                    src="/img/apartment-03.jpg"
                     width="260"
                   />
                 </a>
@@ -515,7 +515,7 @@ exports[`App correctly renders with mock apartments for rent after relaunch 1`] 
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/3"
                   >
                     Canal View Prinsengracht
                   </a>
@@ -542,7 +542,7 @@ exports[`App correctly renders with mock apartments for rent after relaunch 1`] 
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="/img/apartment-01.jpg"
                     width="260"
                   />
                 </a>
@@ -612,7 +612,7 @@ exports[`App correctly renders with mock apartments for rent after relaunch 1`] 
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/4"
                   >
                     Nice, cozy, warm big bed apartment
                   </a>

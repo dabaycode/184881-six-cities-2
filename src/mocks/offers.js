@@ -6,7 +6,22 @@ const data = [
     price: 80,
     rating: 13,
     type: `Private room`,
-    mark: `Premium`
+    mark: `Premium`,
+    properties: {
+      entire: `Entire place`,
+      bedrooms: 3,
+      adults: 4,
+      options: [
+        `Wi-Fi`,
+        `Heating`,
+        `Kitchen`,
+        `Fridge`,
+        `Washing machine`,
+        `Coffee machine`,
+        `Dishwasher`,
+        `Towels`
+      ]
+    }
   }, {
     id: 2,
     title: `Wood and stone place`,
@@ -14,7 +29,21 @@ const data = [
     price: 180,
     rating: 45,
     type: `Private room`,
-    mark: `Premium`
+    mark: `Premium`,
+    properties: {
+      entire: `Entire place`,
+      bedrooms: 2,
+      adults: 1,
+      options: [
+        `Wi-Fi`,
+        `Washing machine`,
+        `Coffee machine`,
+        `Dishwasher`,
+        `Towels`,
+        `Baby seat`,
+        `Cabel TV`
+      ]
+    }
   }, {
     id: 3,
     title: `Canal View Prinsengracht`,
@@ -22,7 +51,13 @@ const data = [
     price: 30,
     rating: 84,
     type: `Private room`,
-    mark: ``
+    mark: ``,
+    properties: {
+      entire: `Entire place`,
+      bedrooms: 4,
+      adults: 3,
+      options: [`Wi-Fi`, `Cabel TV`]
+    }
   }, {
     id: 4,
     title: `Nice, cozy, warm big bed apartment`,
@@ -30,7 +65,24 @@ const data = [
     price: 60,
     rating: 90,
     type: `Private room`,
-    mark: ``
+    mark: ``,
+    properties: {
+      entire: `Entire place`,
+      bedrooms: 3,
+      adults: 4,
+      options: [
+        `Wi-Fi`,
+        `Heating`,
+        `Kitchen`,
+        `Fridge`,
+        `Washing machine`,
+        `Coffee machine`,
+        `Dishwasher`,
+        `Towels`,
+        `Baby seat`,
+        `Cabel TV`
+      ]
+    }
   }
 ];
 

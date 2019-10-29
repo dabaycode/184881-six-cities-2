@@ -7,8 +7,8 @@ const PlaceCardDetail = (props) => {
     image,
     price,
     rating,
-    type,
-    mark
+    mark,
+    offerProperties
   } = props;
 
   return (
@@ -48,13 +48,15 @@ const PlaceCardDetail = (props) => {
             </div>
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
-                Entire place
+                {offerProperties.entire}
               </li>
               <li className="property__feature property__feature--bedrooms">
-                3 Bedrooms
+                {offerProperties.bedrooms + ` `}
+                Bedrooms
               </li>
               <li className="property__feature property__feature--adults">
-                Max 4 adults
+                Max {offerProperties.adults + ` `}
+                adults
               </li>
             </ul>
             <div className="property__price">
@@ -62,38 +64,19 @@ const PlaceCardDetail = (props) => {
               <span className="property__price-text">&nbsp;night</span>
             </div>
             <div className="property__inside">
-              <h2 className="property__inside-title">What's inside</h2>
+              <h2 className="property__inside-title">What&apos;s inside</h2>
               <ul className="property__inside-list">
-                <li className="property__inside-item">
-                  Wi-Fi
-                </li>
-                <li className="property__inside-item">
-                  Washing machine
-                </li>
-                <li className="property__inside-item">
-                  Towels
-                </li>
-                <li className="property__inside-item">
-                  Heating
-                </li>
-                <li className="property__inside-item">
-                  Coffee machine
-                </li>
-                <li className="property__inside-item">
-                  Baby seat
-                </li>
-                <li className="property__inside-item">
-                  Kitchen
-                </li>
-                <li className="property__inside-item">
-                  Dishwasher
-                </li>
-                <li className="property__inside-item">
-                  Cabel TV
-                </li>
-                <li className="property__inside-item">
-                  Fridge
-                </li>
+
+                {offerProperties
+                  .options
+                  .map((item, index) => {
+                    return (
+                      <li className="property__inside-item" key={item + index}>
+                        {item}
+                      </li>
+                    );
+                  })}
+
               </ul>
             </div>
             <div className="property__host">
@@ -149,10 +132,7 @@ const PlaceCardDetail = (props) => {
                   <div className="reviews__info">
                     <div className="reviews__rating rating">
                       <div className="reviews__stars rating__stars">
-                        <span
-                          style={{
-                          width: '94%'
-                        }}/>
+                        <span style={{width: `94%`}}/>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -243,7 +223,7 @@ const PlaceCardDetail = (props) => {
                   id="review"
                   name="review"
                   placeholder="Tell how was your stay, what you like and what can be improved"
-                  defaultValue={""}/>
+                  defaultValue={``}/>
                 <div className="reviews__button-wrapper">
                   <p className="reviews__help">
                     To submit review please make sure to set
@@ -292,7 +272,7 @@ const PlaceCardDetail = (props) => {
                 <div className="place-card__rating rating">
                   <div className="place-card__stars rating__stars">
                     <span style={{
-                      width: '80%'
+                      width: `80%`
                     }}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
@@ -330,7 +310,7 @@ const PlaceCardDetail = (props) => {
                 <div className="place-card__rating rating">
                   <div className="place-card__stars rating__stars">
                     <span style={{
-                      width: '80%'
+                      width: `80%`
                     }}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
@@ -368,7 +348,7 @@ const PlaceCardDetail = (props) => {
                 <div className="place-card__rating rating">
                   <div className="place-card__stars rating__stars">
                     <span style={{
-                      width: '100%'
+                      width: `100%`
                     }}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
@@ -385,15 +365,20 @@ const PlaceCardDetail = (props) => {
     </main>
 
   );
-}
+};
 
 PlaceCardDetail.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-  mark: PropTypes.string.isRequired
+  mark: PropTypes.string.isRequired,
+  offerProperties: PropTypes.shape({
+    entire: PropTypes.string.isRequired,
+    bedrooms: PropTypes.number.isRequired,
+    adults: PropTypes.number.isRequired,
+    options: PropTypes.arrayOf(PropTypes.string.isRequired)
+  })
 };
 
 export default PlaceCardDetail;
