@@ -10,11 +10,12 @@ const PlaceCard = (props) => {
     rating,
     type,
     mark,
-    onCardHover
+    onCardHover,
+    onCardHoverOut
   } = props;
 
   return (
-    <article className="cities__place-card place-card" onMouseOver={onCardHover}>
+    <article className="cities__place-card place-card" onMouseEnter={onCardHover} onMouseLeave={onCardHoverOut}>
       {mark && <div className="place-card__mark">
         <span>{mark}</span>
       </div>}
@@ -66,7 +67,8 @@ PlaceCard.propTypes = {
   rating: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   mark: PropTypes.string.isRequired,
-  onCardHover: PropTypes.func.isRequired
+  onCardHover: PropTypes.func.isRequired,
+  onCardHoverOut: PropTypes.func.isRequired
 };
 
 export default PlaceCard;

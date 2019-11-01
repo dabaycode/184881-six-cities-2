@@ -39,7 +39,7 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       React: `react`,
-      cx: `classnames`
+      PropTypes: `prop-types`,
     }),
   ]
 };

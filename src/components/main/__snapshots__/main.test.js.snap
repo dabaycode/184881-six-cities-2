@@ -225,7 +225,8 @@ exports[`Main screen correctly renders with mock apartments for rent after relau
           >
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="place-card__mark"
@@ -328,7 +329,8 @@ exports[`Main screen correctly renders with mock apartments for rent after relau
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="place-card__mark"
@@ -431,7 +433,8 @@ exports[`Main screen correctly renders with mock apartments for rent after relau
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               
               <div
@@ -528,7 +531,8 @@ exports[`Main screen correctly renders with mock apartments for rent after relau
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               
               <div
@@ -630,7 +634,17 @@ exports[`Main screen correctly renders with mock apartments for rent after relau
         >
           <section
             className="cities__map map"
-          />
+          >
+            <div
+              id="map"
+              style={
+                Object {
+                  "height": "100%",
+                  "width": "100%",
+                }
+              }
+            />
+          </section>
         </div>
       </div>
     </div>

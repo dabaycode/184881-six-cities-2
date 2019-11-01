@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card';
 
-
 class PlaceCardList extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -16,21 +15,39 @@ class PlaceCardList extends React.PureComponent {
     this.setState({hoveredCard: card});
   }
 
+  cardHoverOutHanler() {
+    this.setState({hoveredCard: null});
+  }
+
   render() {
     const {cards} = this.props;
 
     return (
       <div className="cities__places-list places__list tabs__content">
-        {cards.map((item, index) => <PlaceCard
-          key={item.title + index}
-          id={item.id}
-          title={item.title}
-          image={item.image}
-          price={item.price}
-          rating={item.rating}
-          type={item.type}
-          mark={item.mark}
-          onCardHover={() => this.cardHoverHanler(item)}/>)}
+        {cards.map((item) => {
+
+          const {
+            id,
+            title,
+            image,
+            price,
+            rating,
+            type,
+            mark
+          } = item;
+
+          return (<PlaceCard
+            key={`offerCard-` + id}
+            id={id}
+            title={title}
+            image={image}
+            price={price}
+            rating={rating}
+            type={type}
+            mark={mark}
+            onCardHover={() => this.cardHoverHanler(item)}
+            onCardHoverOut={() => this.cardHoverOutHanler()}/>);
+        })}
       </div>
     );
 

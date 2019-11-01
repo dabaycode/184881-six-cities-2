@@ -6,7 +6,8 @@ exports[`Place card list correctly renders with 2 cards 1`] = `
 >
   <article
     className="cities__place-card place-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="place-card__mark"
@@ -109,7 +110,8 @@ exports[`Place card list correctly renders with 2 cards 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="place-card__mark"
