@@ -12,7 +12,8 @@ it(`Place card correctly renders with 1 apartment for rent after relaunch`, () =
       rating={13}
       type={`Private room`}
       mark={`Premium`}
-      onCardHover={() => {}}/>)
+      onCardHover={() => {}}
+      onCardHoverOut={() => {}}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

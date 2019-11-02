@@ -7,6 +7,7 @@ const data = [
     rating: 13,
     type: `Private room`,
     mark: `Premium`,
+    coordinates: [52.3909553943508, 4.85309666406198],
     properties: {
       entire: `Entire place`,
       bedrooms: 3,
@@ -30,6 +31,7 @@ const data = [
     rating: 45,
     type: `Private room`,
     mark: `Premium`,
+    coordinates: [52.369553943508, 4.85309666406198],
     properties: {
       entire: `Entire place`,
       bedrooms: 2,
@@ -52,6 +54,7 @@ const data = [
     rating: 84,
     type: `Private room`,
     mark: ``,
+    coordinates: [52.3909553943508, 4.929309666406198],
     properties: {
       entire: `Entire place`,
       bedrooms: 4,
@@ -66,6 +69,7 @@ const data = [
     rating: 90,
     type: `Private room`,
     mark: ``,
+    coordinates: [52.3809553943508, 4.939309666406198],
     properties: {
       entire: `Entire place`,
       bedrooms: 3,

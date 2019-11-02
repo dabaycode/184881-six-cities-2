@@ -19,14 +19,17 @@ const getPageScreen = (props) => {
         });
 
         if (activeCard) {
+
+          const {title, image, price, rating, type, mark, properties} = activeCard;
+
           return (<PlaceCardDetail
-            title={activeCard.title}
-            image={activeCard.image}
-            price={activeCard.price}
-            rating={activeCard.rating}
-            type={activeCard.type}
-            mark={activeCard.mark}
-            offerProperties={activeCard.properties}/>);
+            title={title}
+            image={image}
+            price={price}
+            rating={rating}
+            type={type}
+            mark={mark}
+            offerProperties={properties}/>);
         }
 
         return `404`;
@@ -41,7 +44,7 @@ const getPageScreen = (props) => {
 
 const App = (props) => {
   return (
-    <React.Fragment>{getPageScreen(props)}</React.Fragment>
+    <>{getPageScreen(props)}</>
   );
 
 };
