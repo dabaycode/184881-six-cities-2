@@ -1,7 +1,6 @@
-import React from 'react';
 import Main from "../main/main";
-import PropTypes from 'prop-types';
 import PlaceCardDetail from '../place-card-detail/place-card-detail';
+import {findCardById} from '../../utils';
 
 const getPageScreen = (props) => {
   const {placeCards, onClickHead} = props;
@@ -14,13 +13,16 @@ const getPageScreen = (props) => {
     case `offer`:
       if (/\d+/.test(url[2])) {
 
-        const activeCard = placeCards.find((item) => {
-          return item.id === (+url[2]);
-        });
+        const activeCard = findCardById(+url[2], placeCards);
 
         if (activeCard) {
 
-          const {title, image, price, rating, type, mark, properties} = activeCard;
+          const {title, image, price, rating, type, mark, properties, reviews, near} = activeCard;
+          const nearCards = [];
+
+          near.forEach((id)=> {
+            nearCards.push(findCardById(id, placeCards));
+          });
 
           return (<PlaceCardDetail
             title={title}
@@ -29,6 +31,8 @@ const getPageScreen = (props) => {
             rating={rating}
             type={type}
             mark={mark}
+            reviews={reviews}
+            nearCards={nearCards}
             offerProperties={properties}/>);
         }
 
@@ -60,6 +64,7 @@ getPageScreen.propTypes = {
     rating: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     mark: PropTypes.string.isRequired,
+    near: PropTypes.arrayOf(PropTypes.number.isRequired),
     properties: PropTypes.shape({
       entire: PropTypes.string.isRequired,
       bedrooms: PropTypes.number.isRequired,
@@ -79,6 +84,7 @@ Main.propTypes = {
     rating: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     mark: PropTypes.string.isRequired,
+    near: PropTypes.arrayOf(PropTypes.number.isRequired),
     properties: PropTypes.shape({
       entire: PropTypes.string.isRequired,
       bedrooms: PropTypes.number.isRequired,

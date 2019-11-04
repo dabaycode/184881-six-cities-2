@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
 import Map from '../map/map';
 

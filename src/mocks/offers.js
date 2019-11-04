@@ -7,7 +7,9 @@ const data = [
     rating: 13,
     type: `Private room`,
     mark: `Premium`,
-    coordinates: [52.3909553943508, 4.85309666406198],
+    coordinates: [
+      52.3909553943508, 4.85309666406198
+    ],
     properties: {
       entire: `Entire place`,
       bedrooms: 3,
@@ -22,7 +24,19 @@ const data = [
         `Dishwasher`,
         `Towels`
       ]
-    }
+    },
+    reviews: [
+      {
+        user: {
+          photo: `/img/apartment-02.jpg`,
+          name: `Max`
+        },
+        rating: 72,
+        text: `Great place!`,
+        date: `2019-07-12`
+      }
+    ],
+    near: [2, 4]
   }, {
     id: 2,
     title: `Wood and stone place`,
@@ -31,7 +45,9 @@ const data = [
     rating: 45,
     type: `Private room`,
     mark: `Premium`,
-    coordinates: [52.369553943508, 4.85309666406198],
+    coordinates: [
+      52.369553943508, 4.85309666406198
+    ],
     properties: {
       entire: `Entire place`,
       bedrooms: 2,
@@ -45,7 +61,19 @@ const data = [
         `Baby seat`,
         `Cabel TV`
       ]
-    }
+    },
+    reviews: [
+      {
+        user: {
+          photo: `/img/apartment-02.jpg`,
+          name: `Max`
+        },
+        rating: 72,
+        text: `Great place!`,
+        date: `2019-07-12`
+      }
+    ],
+    near: [1, 3, 4]
   }, {
     id: 3,
     title: `Canal View Prinsengracht`,
@@ -54,13 +82,27 @@ const data = [
     rating: 84,
     type: `Private room`,
     mark: ``,
-    coordinates: [52.3909553943508, 4.929309666406198],
+    coordinates: [
+      52.3909553943508, 4.929309666406198
+    ],
     properties: {
       entire: `Entire place`,
       bedrooms: 4,
       adults: 3,
       options: [`Wi-Fi`, `Cabel TV`]
-    }
+    },
+    reviews: [
+      {
+        user: {
+          photo: `/img/apartment-02.jpg`,
+          name: `Max`
+        },
+        rating: 72,
+        text: `Great place!`,
+        date: `2019-07-12`
+      }
+    ],
+    near: [1]
   }, {
     id: 4,
     title: `Nice, cozy, warm big bed apartment`,
@@ -69,7 +111,9 @@ const data = [
     rating: 90,
     type: `Private room`,
     mark: ``,
-    coordinates: [52.3809553943508, 4.939309666406198],
+    coordinates: [
+      52.3809553943508, 4.939309666406198
+    ],
     properties: {
       entire: `Entire place`,
       bedrooms: 3,
@@ -86,7 +130,19 @@ const data = [
         `Baby seat`,
         `Cabel TV`
       ]
-    }
+    },
+    reviews: [
+      {
+        user: {
+          photo: `/img/apartment-02.jpg`,
+          name: `Max`
+        },
+        rating: 72,
+        text: `Great place!`,
+        date: `2019-07-12`
+      }
+    ],
+    near: [1, 3]
   }
 ];
 
