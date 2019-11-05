@@ -13,7 +13,7 @@ const init = () => {
 
   ReactDOM.render(
     <Provider store={store}>
-      <App city={actualCities[0]} placeCards={rentMockList} actualCities={actualCities}/>
+      <App city={actualCities[0]} placeCards={rentMockList} actualCities={actualCities} cityFilterClickHandler={()=>{}}/>
     </Provider>, document.getElementById(`root`));
 };
 

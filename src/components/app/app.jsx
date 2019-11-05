@@ -62,7 +62,9 @@ class App extends  React.PureComponent {
   }
 }
 
-Main.propTypes = {
+App.propTypes = {
+  city: PropTypes.string.isRequired,
+  actualCities: PropTypes.arrayOf(PropTypes.string.isRequired),
   placeCards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

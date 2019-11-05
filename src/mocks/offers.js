@@ -147,6 +147,47 @@ const data = [
       }
     ],
     near: [1, 3]
+  }, {
+    id: 5,
+    title: `Nice, cozy, warm big bed apartment`,
+    image: `/img/apartment-01.jpg`,
+    price: 60,
+    rating: 90,
+    type: `Private room`,
+    mark: ``,
+    city: `Brussels`,
+    coordinates: [
+      52.3809553943508, 4.939309666406198
+    ],
+    properties: {
+      entire: `Entire place`,
+      bedrooms: 3,
+      adults: 4,
+      options: [
+        `Wi-Fi`,
+        `Heating`,
+        `Kitchen`,
+        `Fridge`,
+        `Washing machine`,
+        `Coffee machine`,
+        `Dishwasher`,
+        `Towels`,
+        `Baby seat`,
+        `Cabel TV`
+      ]
+    },
+    reviews: [
+      {
+        user: {
+          photo: `/img/apartment-02.jpg`,
+          name: `Max`
+        },
+        rating: 72,
+        text: `Great place!`,
+        date: `2019-07-12`
+      }
+    ],
+    near: [1, 3]
   }
 ];
 

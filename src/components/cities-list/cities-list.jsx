@@ -6,7 +6,12 @@ const CitiesList = (props) => {
       {cities.map((item) => {
         return (
           <li className="locations__item" key={`city-` + item}>
-            <a className={`locations__item-link tabs__item ` + (item === currentCity && `tabs__item--active`)} href="#" onClick={() => {onCityFilterClick(item)}}>
+            <a
+              className={`locations__item-link tabs__item ` + (item === currentCity && `tabs__item--active`)}
+              href="#"
+              onClick={() => {
+              onCityFilterClick(item)
+            }}>
               <span>{item}</span>
             </a>
           </li>
@@ -17,3 +22,8 @@ const CitiesList = (props) => {
 }
 
 export default CitiesList;
+
+CitiesList.propTypes = {
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired),
+  currentCity: PropTypes.string,
+};

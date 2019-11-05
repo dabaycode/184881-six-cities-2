@@ -92,7 +92,24 @@ class Main extends React.PureComponent {
 }
 
 Main.propTypes = {
-  placeCards: PropTypes.array.isRequired
+  currentCity: PropTypes.string.isRequired,
+  actualCities: PropTypes.arrayOf(PropTypes.string.isRequired),
+  placeCards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    mark: PropTypes.string.isRequired,
+    near: PropTypes.arrayOf(PropTypes.number.isRequired),
+    properties: PropTypes.shape({
+      entire: PropTypes.string.isRequired,
+      bedrooms: PropTypes.number.isRequired,
+      adults: PropTypes.number.isRequired,
+      options: PropTypes.arrayOf(PropTypes.string.isRequired)
+    })
+  })),
 };
 
 export default Main;
