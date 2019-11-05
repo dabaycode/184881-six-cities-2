@@ -7,6 +7,7 @@ const data = [
     rating: 13,
     type: `Private room`,
     mark: `Premium`,
+    city: `Amsterdam`,
     coordinates: [
       52.3909553943508, 4.85309666406198
     ],
@@ -45,6 +46,7 @@ const data = [
     rating: 45,
     type: `Private room`,
     mark: `Premium`,
+    city: `Paris`,
     coordinates: [
       52.369553943508, 4.85309666406198
     ],
@@ -82,6 +84,7 @@ const data = [
     rating: 84,
     type: `Private room`,
     mark: ``,
+    city: `Cologne`,
     coordinates: [
       52.3909553943508, 4.929309666406198
     ],
@@ -111,6 +114,7 @@ const data = [
     rating: 90,
     type: `Private room`,
     mark: ``,
+    city: `Brussels`,
     coordinates: [
       52.3809553943508, 4.939309666406198
     ],

@@ -8,21 +8,48 @@ class Map extends React.PureComponent {
 
     this.mapContainer = React.createRef();
 
-    this._iconUrl = mapIconUrl ? mapIconUrl : `/img/pin.svg`;
-    this._iconSize = mapIconSize ? mapIconSize : [30, 30];
-    this._zoom = mapZoom ? mapZoom : 12;
-    this._city = mapCityCoords ? mapCityCoords : [52.3909553943508, 4.85309666406198];
+    this._iconUrl = mapIconUrl
+      ? mapIconUrl
+      : `/img/pin.svg`;
+    this._iconSize = mapIconSize
+      ? mapIconSize
+      : [30, 30];
+    this._zoom = mapZoom
+      ? mapZoom
+      : 12;
+    this._city = mapCityCoords
+      ? mapCityCoords
+      : [52.3909553943508, 4.85309666406198];
 
-    this.cards = cards;
+    this.state = {
+      cards: cards
+    }
+  }
+
+  _addMArkersToMap() {
+    this._markerGroup = Leaflet
+      .layerGroup()
+      .addTo(this._map);
+
+    this
+      .state
+      .cards
+      .forEach((card) => {
+        Leaflet
+          .marker(card.coordinates, this._icon)
+          .addTo(this._markerGroup);
+      });
   }
 
   componentDidMount() {
-    this._map = this.mapContainer.current ? Leaflet.map(this.mapContainer.current, {
-      center: this._city,
-      zoom: this._zoom,
-      zoomControl: false,
-      marker: true
-    }) : null;
+    this._map = this.mapContainer.current
+      ? Leaflet.map(this.mapContainer.current, {
+        center: this._city,
+        zoom: this._zoom,
+        zoomControl: false,
+        marker: true
+      })
+      : null;
 
     if (this._map) {
       this
@@ -31,28 +58,35 @@ class Map extends React.PureComponent {
 
       Leaflet
         .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-          attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contr` + `ibutors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-        })
+        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contr` + `ibutors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+      })
         .addTo(this._map);
 
       this._icon = Leaflet.icon({iconUrl: this._iconUrl, iconSize: this._iconSize});
 
-      this
-        .cards
-        .forEach((card) => {
-          Leaflet
-            .marker(card.coordinates, this._icon)
-            .addTo(this._map);
-        });
+      this._addMArkersToMap();
     }
+  }
+
+  componentDidUpdate() {
+    this.setState({cards: this.props.cards});
+
+    this
+      ._map
+      .removeLayer(this._markerGroup);
+
+    this._addMArkersToMap();
   }
 
   render() {
     return (
-      <div id="map" style={{
+      <div
+        id="map"
+        style={{
         width: `100%`,
         height: `100%`
-      }} ref={this.mapContainer}></div>
+      }}
+        ref={this.mapContainer}></div>
     );
   }
 }
