@@ -1,6 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
 const PlaceCard = (props) => {
   const {
     id,
@@ -10,12 +7,13 @@ const PlaceCard = (props) => {
     rating,
     type,
     mark,
+    isNear,
     onCardHover,
     onCardHoverOut
   } = props;
 
   return (
-    <article className="cities__place-card place-card" onMouseEnter={onCardHover} onMouseLeave={onCardHoverOut}>
+    <article className={isNear ? `near-places__card` : `cities__place-card` + ` place-card`} onMouseEnter={onCardHover} onMouseLeave={onCardHoverOut}>
       {mark && <div className="place-card__mark">
         <span>{mark}</span>
       </div>}
@@ -67,6 +65,7 @@ PlaceCard.propTypes = {
   rating: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   mark: PropTypes.string.isRequired,
+  isNear: PropTypes.bool,
   onCardHover: PropTypes.func.isRequired,
   onCardHoverOut: PropTypes.func.isRequired
 };

@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card';
 
 class PlaceCardList extends React.PureComponent {
@@ -20,10 +18,11 @@ class PlaceCardList extends React.PureComponent {
   }
 
   render() {
-    const {cards} = this.props;
+    const {cards, isNear} = this.props;
 
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div
+        className={isNear ? `near-places__list` : `cities__places-list` + ` places__list tabs__content`}>
         {cards.map((item) => {
 
           const {
@@ -45,6 +44,7 @@ class PlaceCardList extends React.PureComponent {
             rating={rating}
             type={type}
             mark={mark}
+            isNear={isNear}
             onCardHover={() => this.cardHoverHanler(item)}
             onCardHoverOut={() => this.cardHoverOutHanler()}/>);
         })}
@@ -65,5 +65,6 @@ PlaceCardList.propTypes = {
     rating: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     mark: PropTypes.string.isRequired
-  }))
+  })),
+  isNear: PropTypes.bool
 };
