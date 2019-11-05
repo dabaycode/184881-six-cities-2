@@ -54,11 +54,11 @@ const PlaceCardDetail = (props) => {
                 {offerProperties.entire}
               </li>
               <li className="property__feature property__feature--bedrooms">
-                {offerProperties.bedrooms + ` `}
+                {[offerProperties.bedrooms, ` `]}
                 Bedrooms
               </li>
               <li className="property__feature property__feature--adults">
-                Max {offerProperties.adults + ` `}
+                Max {[offerProperties.adults,` `]}
                 adults
               </li>
             </ul>

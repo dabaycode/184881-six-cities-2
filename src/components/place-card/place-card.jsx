@@ -14,7 +14,7 @@ const PlaceCard = (props) => {
 
   return (
     <article className={isNear ? `near-places__card` : `cities__place-card` + ` place-card`} onMouseEnter={onCardHover} onMouseLeave={onCardHoverOut}>
-      {mark && <div className="place-card__mark">
+      {mark && !isNear && <div className="place-card__mark">
         <span>{mark}</span>
       </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
