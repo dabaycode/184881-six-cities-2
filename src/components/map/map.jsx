@@ -4,16 +4,19 @@ class Map extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const {mapIconUrl, mapIconSize, mapZoom, mapCityCoords, cards} = props;
+    const {mapIconUrl, mapActiveIconUrl, mapIconSize, mapZoom, mapCityCoords, cards} = props;
 
     this.mapContainer = React.createRef();
 
     this._iconUrl = mapIconUrl
       ? mapIconUrl
       : `/img/pin.svg`;
+    this._activeIconUrl = mapActiveIconUrl
+      ? mapActiveIconUrl
+      : `/img/pin-active.svg`;
     this._iconSize = mapIconSize
       ? mapIconSize
-      : [30, 30];
+      : [22, 30];
     this._zoom = mapZoom
       ? mapZoom
       : 12;
@@ -21,8 +24,12 @@ class Map extends React.PureComponent {
       ? mapCityCoords
       : [52.3909553943508, 4.85309666406198];
 
+    this._icon = Leaflet.icon({iconUrl: this._iconUrl, iconSize: this._iconSize});
+    this._iconActive = Leaflet.icon({iconUrl: this._activeIconUrl, iconSize: this._iconSize});
+
     this.state = {
-      cards: cards
+      cards: cards,
+      hoveredCard: this.props.hoveredCard,
     }
   }
 
@@ -35,9 +42,16 @@ class Map extends React.PureComponent {
       .state
       .cards
       .forEach((card) => {
-        Leaflet
-          .marker(card.coordinates, this._icon)
+        if(this.state.hoveredCard && (card.id === this.state.hoveredCard.id)) {
+          Leaflet
+          .marker(card.coordinates, {icon: this._iconActive})
           .addTo(this._markerGroup);
+        } else {
+          Leaflet
+          .marker(card.coordinates, {icon: this._icon})
+          .addTo(this._markerGroup);
+        }
+
       });
   }
 
@@ -62,14 +76,12 @@ class Map extends React.PureComponent {
       })
         .addTo(this._map);
 
-      this._icon = Leaflet.icon({iconUrl: this._iconUrl, iconSize: this._iconSize});
-
       this._addMarkersToMap();
     }
   }
 
   componentDidUpdate() {
-    this.setState({cards: this.props.cards});
+    this.setState({cards: this.props.cards, hoveredCard: this.props.hoveredCard});
 
     this
       ._map
@@ -84,7 +96,7 @@ class Map extends React.PureComponent {
         id="map"
         style={{
         width: `100%`,
-        height: `100%`
+        height: `100%`,
       }}
         ref={this.mapContainer}></div>
     );

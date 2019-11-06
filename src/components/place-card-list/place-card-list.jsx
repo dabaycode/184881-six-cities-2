@@ -11,10 +11,12 @@ class PlaceCardList extends React.PureComponent {
 
   cardHoverHanler(card) {
     this.setState({hoveredCard: card});
+    this.props.onCardHover(card);
   }
 
   cardHoverOutHanler() {
     this.setState({hoveredCard: null});
+    this.props.onCardHover(null);
   }
 
   _sortCards(type, cards) {

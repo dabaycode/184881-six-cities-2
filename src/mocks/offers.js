@@ -157,7 +157,7 @@ const data = [
     mark: ``,
     city: `Brussels`,
     coordinates: [
-      52.3809553943508, 4.939309666406198
+      52.3809553943508, 4.929309666401235
     ],
     properties: {
       entire: `Entire place`,

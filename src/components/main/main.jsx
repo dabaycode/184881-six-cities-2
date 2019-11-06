@@ -8,10 +8,12 @@ class Main extends React.PureComponent {
     super(props);
 
     this.state = {
-      isOptionsOpen: false
+      isOptionsOpen: false,
+      hoveredCard: null
     }
 
     this._toggleSortOptions = this._toggleSortOptions.bind(this);
+    this.hoverCardHandler = this.hoverCardHandler.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +26,13 @@ class Main extends React.PureComponent {
     this.setState({
       isOptionsOpen: !this.state.isOptionsOpen
     });
+  }
+
+  hoverCardHandler(card) {
+    this.setState({
+      ...this.state,
+      hoveredCard: card,
+    })
   }
 
   render() {
@@ -86,11 +95,11 @@ class Main extends React.PureComponent {
                   </span>
                   <PlacesOptionList isOpen={this.state.isOptionsOpen} onItemClick={onOprionsSortClick} availableSorts={availableSorts}/>
                 </form>
-                <PlaceCardList sort={sortType} cards={placeCards}/>
+                <PlaceCardList sort={sortType} cards={placeCards} onCardHover={this.hoverCardHandler}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map cards={placeCards}/>
+                  <Map cards={placeCards} hoveredCard={this.state.hoveredCard}/>
                 </section>
               </div>
             </div>
