@@ -9,7 +9,9 @@ class App extends  React.PureComponent {
     super(props);
   }
 
-  _getPageScreen(city, placeCards, actualCities, cityFilterClickHandler) {
+  _getPageScreen() {
+
+    const {city, placeCards, actualCities, availableSorts, sortType, cityFilterClickHandler, optionsClickHandler} = this.props;
   
     const url = location
       .pathname
@@ -46,7 +48,7 @@ class App extends  React.PureComponent {
         }
         break;
       default:
-        return (<Main placeCards={placeCards} currentCity={city} cities={actualCities} onCityFilterClick={cityFilterClickHandler}/>);
+        return (<Main placeCards={placeCards} currentCity={city} cities={actualCities} onCityFilterClick={cityFilterClickHandler} onOprionsSortClick={optionsClickHandler} availableSorts={availableSorts} sortType={sortType}/>);
     }
   
     return null;
@@ -54,10 +56,8 @@ class App extends  React.PureComponent {
 
 
   render() {
-    const {city, placeCards, actualCities, cityFilterClickHandler} = this.props;
-
     return (
-      <>{this._getPageScreen(city, placeCards, actualCities, cityFilterClickHandler)}</>
+      <>{this._getPageScreen()}</>
     );
   }
 }
@@ -86,12 +86,17 @@ App.propTypes = {
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   city: state.city,
   placeCards: state.offers,
+  sortType: state.sortType,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   cityFilterClickHandler: (city) => {
     dispatch(ActionCreator.changeCity(city));
     dispatch(ActionCreator.getOffers(city));
+  },
+
+  optionsClickHandler: (option) => {
+    dispatch(ActionCreator.changeSortType(option));
   }
 });
 

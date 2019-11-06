@@ -26,7 +26,7 @@ class Map extends React.PureComponent {
     }
   }
 
-  _addMArkersToMap() {
+  _addMarkersToMap() {
     this._markerGroup = Leaflet
       .layerGroup()
       .addTo(this._map);
@@ -64,7 +64,7 @@ class Map extends React.PureComponent {
 
       this._icon = Leaflet.icon({iconUrl: this._iconUrl, iconSize: this._iconSize});
 
-      this._addMArkersToMap();
+      this._addMarkersToMap();
     }
   }
 
@@ -75,7 +75,7 @@ class Map extends React.PureComponent {
       ._map
       .removeLayer(this._markerGroup);
 
-    this._addMArkersToMap();
+    this._addMarkersToMap();
   }
 
   render() {

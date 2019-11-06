@@ -1,16 +1,4 @@
-const findCardById = (id, cards) => {
-  const card = cards.find((item) => {
-    return item.id === (id);
-  });
-
-  return card;
-};
-
-const findOffersByCity = (city, offers) => {
-  return offers.filter((item) => {
-    return item.city === city;
-  });
-};
+const findCardById = (id, cards) => cards.find((item) => item.id === id);
 
 const getActualCities = (offers) => {
   let cities = [];
@@ -19,11 +7,9 @@ const getActualCities = (offers) => {
     cities.push(item.city);
   });
 
-  let allCities = cities.filter((item, index) => {
-    return cities.indexOf(item) === index;
-  });
+  let uniqCities = cities.filter((item, index) => cities.indexOf(item) === index);
 
-  return allCities.slice(0, 6);
+  return uniqCities.slice(0, 6);
 }
 
-export {findCardById, findOffersByCity, getActualCities};
+export {findCardById, getActualCities};

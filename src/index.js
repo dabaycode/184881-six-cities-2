@@ -10,10 +10,16 @@ const init = () => {
   const store = createStore(reducer);
   const offers = store.getState().offers;
   const actualCities = getActualCities(offers);
+  const AVAILABLE_SORTS = [
+    `Popular`,
+    `Price: low to high`,
+    `Price: high to low`,
+    `Top rated first`
+  ];
 
   ReactDOM.render(
     <Provider store={store}>
-      <App city={actualCities[0]} placeCards={rentMockList} actualCities={actualCities} cityFilterClickHandler={()=>{}}/>
+      <App city={actualCities[0]} placeCards={rentMockList} actualCities={actualCities} availableSorts={AVAILABLE_SORTS} cityFilterClickHandler={()=>{}}/>
     </Provider>, document.getElementById(`root`));
 };
 

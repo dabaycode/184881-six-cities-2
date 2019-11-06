@@ -17,13 +17,28 @@ class PlaceCardList extends React.PureComponent {
     this.setState({hoveredCard: null});
   }
 
+  _sortCards(type, cards) {
+    switch(type) {
+      case `Popular`:
+        return cards;
+      case `Price: low to high`:
+          return cards.sort((a, b) => a.price > b.price ? 1 : -1);
+      case `Price: high to low`:
+          return cards.sort((a, b) => a.price < b.price ? 1 : -1);
+      case `Top rated first`:
+          return cards.sort((a, b) => a.rating < b.rating ? 1 : -1);
+    }
+
+    return cards;
+  }
+
   render() {
-    const {cards, isNear} = this.props;
+    const {cards, sort, isNear} = this.props;
 
     return (
       <div
         className={isNear ? `near-places__list` : `cities__places-list` + ` places__list tabs__content`}>
-        {cards.map((item) => {
+        {this._sortCards(sort, cards).map((item) => {
 
           const {
             id,
