@@ -150,7 +150,7 @@ const data = [
   }, {
     id: 5,
     title: `Nice, cozy, warm big bed apartment`,
-    image: `/img/apartment-01.jpg`,
+    image: `/img/apartment-03.jpg`,
     price: 20,
     rating: 100,
     type: `Private room`,

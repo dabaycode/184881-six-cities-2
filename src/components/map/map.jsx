@@ -4,7 +4,13 @@ class Map extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const {mapIconUrl, mapActiveIconUrl, mapIconSize, mapZoom, mapCityCoords, cards} = props;
+    const {
+      mapIconUrl,
+      mapActiveIconUrl,
+      mapIconSize,
+      mapZoom,
+      mapCityCoords
+    } = this.props;
 
     this.mapContainer = React.createRef();
 
@@ -28,9 +34,9 @@ class Map extends React.PureComponent {
     this._iconActive = Leaflet.icon({iconUrl: this._activeIconUrl, iconSize: this._iconSize});
 
     this.state = {
-      cards: cards,
+      cards: this.props.cards,
       hoveredCard: this.props.hoveredCard,
-    }
+    };
   }
 
   _addMarkersToMap() {
@@ -42,14 +48,14 @@ class Map extends React.PureComponent {
       .state
       .cards
       .forEach((card) => {
-        if(this.state.hoveredCard && (card.id === this.state.hoveredCard.id)) {
+        if (this.state.hoveredCard && (card.id === this.state.hoveredCard)) {
           Leaflet
-          .marker(card.coordinates, {icon: this._iconActive})
-          .addTo(this._markerGroup);
+            .marker(card.coordinates, {icon: this._iconActive})
+            .addTo(this._markerGroup);
         } else {
           Leaflet
-          .marker(card.coordinates, {icon: this._icon})
-          .addTo(this._markerGroup);
+            .marker(card.coordinates, {icon: this._icon})
+            .addTo(this._markerGroup);
         }
 
       });
@@ -72,8 +78,8 @@ class Map extends React.PureComponent {
 
       Leaflet
         .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contr` + `ibutors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
+          attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contr` + `ibutors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+        })
         .addTo(this._map);
 
       this._addMarkersToMap();
@@ -95,9 +101,9 @@ class Map extends React.PureComponent {
       <div
         id="map"
         style={{
-        width: `100%`,
-        height: `100%`,
-      }}
+          width: `100%`,
+          height: `100%`
+        }}
         ref={this.mapContainer}></div>
     );
   }
@@ -107,9 +113,11 @@ export default Map;
 
 Map.propTypes = {
   mapIconUrl: PropTypes.string,
+  mapActiveIconUrl: PropTypes.string,
   mapIconSize: PropTypes.arrayOf(PropTypes.number.isRequired),
   mapZoom: PropTypes.number,
   mapCityCoords: PropTypes.arrayOf(PropTypes.number.isRequired),
+  hoveredCard: PropTypes.number.isRequired,
   cards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

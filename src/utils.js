@@ -10,6 +10,6 @@ const getActualCities = (offers) => {
   let uniqCities = cities.filter((item, index) => cities.indexOf(item) === index);
 
   return uniqCities.slice(0, 6);
-}
+};
 
 export {findCardById, getActualCities};

@@ -10,10 +10,14 @@ class Main extends React.PureComponent {
     this.state = {
       isOptionsOpen: false,
       hoveredCard: null
-    }
+    };
 
-    this._toggleSortOptions = this._toggleSortOptions.bind(this);
-    this.hoverCardHandler = this.hoverCardHandler.bind(this);
+    this._toggleSortOptions = this
+      ._toggleSortOptions
+      .bind(this);
+    this.hoverCardHandler = this
+      .hoverCardHandler
+      .bind(this);
   }
 
   componentDidMount() {
@@ -28,15 +32,20 @@ class Main extends React.PureComponent {
     });
   }
 
-  hoverCardHandler(card) {
-    this.setState({
-      ...this.state,
-      hoveredCard: card,
-    })
+  hoverCardHandler(id) {
+    this.setState(Object.assign({}, this.state, {hoveredCard: id}));
   }
 
   render() {
-    const {currentCity, cities, placeCards, sortType, onCityFilterClick, onOprionsSortClick, availableSorts} = this.props;
+    const {
+      currentCity,
+      cities,
+      placeCards,
+      sortType,
+      onCityFilterClick,
+      onOprionsSortClick,
+      availableSorts
+    } = this.props;
 
     return (
       <div className="page page--gray page--main">
@@ -83,7 +92,8 @@ class Main extends React.PureComponent {
                 <b className="places__found">{[placeCards.length, ` `]}
                   places to stay in {[` `, currentCity]}</b>
                 <form className="places__sorting" action="#" method="get">
-                  <span className="places__sorting-caption">Sort by </span>
+                  <span className="places__sorting-caption">Sort by
+                  </span>
                   <span
                     className="places__sorting-type"
                     tabIndex="0"
@@ -93,9 +103,15 @@ class Main extends React.PureComponent {
                       <use xlinkHref="#icon-arrow-select"></use>
                     </svg>
                   </span>
-                  <PlacesOptionList isOpen={this.state.isOptionsOpen} onItemClick={onOprionsSortClick} availableSorts={availableSorts}/>
+                  <PlacesOptionList
+                    isOpen={this.state.isOptionsOpen}
+                    onItemClick={onOprionsSortClick}
+                    availableSorts={availableSorts}/>
                 </form>
-                <PlaceCardList sort={sortType} cards={placeCards} onCardHover={this.hoverCardHandler}/>
+                <PlaceCardList
+                  sort={sortType}
+                  cards={placeCards}
+                  onCardHover={this.hoverCardHandler}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
@@ -113,7 +129,11 @@ class Main extends React.PureComponent {
 
 Main.propTypes = {
   currentCity: PropTypes.string.isRequired,
-  actualCities: PropTypes.arrayOf(PropTypes.string.isRequired),
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired),
+  sortType: PropTypes.string.isRequired,
+  onCityFilterClick: PropTypes.func.isRequired,
+  onOprionsSortClick: PropTypes.func.isRequired,
+  availableSorts: PropTypes.arrayOf(PropTypes.string.isRequired),
   placeCards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
