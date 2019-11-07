@@ -4,11 +4,14 @@ env:
   commonjs: true
   jest: true
 
+parser: babel-eslint
+
 extends: ['htmlacademy/es6', 'plugin:react/recommended']
 
 parserOptions:
   ecmaFeatures:
     jsx: true
+    spread: true
   ecmaVersion: 6
   sourceType: module
 
