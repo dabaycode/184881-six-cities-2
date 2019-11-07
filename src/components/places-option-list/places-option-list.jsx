@@ -34,7 +34,7 @@ class PlacesOptionList extends React.PureComponent {
 export default PlacesOptionList;
 
 PlacesOptionList.propTypes = {
-  availableSorts: PropTypes.arrayOf(PropTypes.array.isRequired),
+  availableSorts: PropTypes.arrayOf(PropTypes.string.isRequired),
   isOpen: PropTypes.bool,
   onItemClick: PropTypes.func.isRequired,
 };

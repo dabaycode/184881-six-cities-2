@@ -117,7 +117,7 @@ Map.propTypes = {
   mapIconSize: PropTypes.arrayOf(PropTypes.number.isRequired),
   mapZoom: PropTypes.number,
   mapCityCoords: PropTypes.arrayOf(PropTypes.number.isRequired),
-  hoveredCard: PropTypes.number.isRequired,
+  hoveredCard: PropTypes.number,
   cards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
