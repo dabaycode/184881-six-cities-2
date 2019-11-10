@@ -90,6 +90,6 @@ export default PlaceCardList;
 PlaceCardList.propTypes = {
   cards: PropTypes.array.isRequired,
   isNear: PropTypes.bool,
-  onCardHover: PropTypes.func.isRequired,
-  sort: PropTypes.string.isRequired,
+  onCardHover: PropTypes.func,
+  sort: PropTypes.string,
 };

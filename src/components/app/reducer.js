@@ -1,6 +1,12 @@
-import initialState from '../../initialState';
+import mockOffers from '../../mocks/offers';
 
-export default (state = initialState, action) => {
+export const INITIAL_STATE = {
+  city: `Amsterdam`,
+  sortType: `Popular`,
+  offers: mockOffers
+};
+
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case `CHANGE_CITY`:
       return Object.assign({}, state, {city: action.payload});
@@ -12,7 +18,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {sortType: action.payload});
 
     case `RESET`:
-      return Object.assign({}, initialState);
+      return Object.assign({}, INITIAL_STATE);
   }
 
   return state;

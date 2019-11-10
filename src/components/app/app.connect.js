@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import ActionCreator from './app.actions';
+import ActionCreator from './actions';
 import App from './app';
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
