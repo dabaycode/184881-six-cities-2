@@ -8,6 +8,7 @@ it(`Map correctly renders with 1 apartment for rent after relaunch`, () => {
       mapIconSize={[30, 30]}
       mapZoom={12}
       mapCityCoords={[52.3909553943508, 4.85309666406198]}
+      hoveredCard={1}
       cards={[{
         id: 1,
         title: `Beautiful & luxurious apartment at great location`,

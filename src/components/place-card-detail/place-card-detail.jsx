@@ -58,7 +58,7 @@ const PlaceCardDetail = (props) => {
                 Bedrooms
               </li>
               <li className="property__feature property__feature--adults">
-                Max {[offerProperties.adults,` `]}
+                Max {[offerProperties.adults, ` `]}
                 adults
               </li>
             </ul>

@@ -150,14 +150,14 @@ const data = [
   }, {
     id: 5,
     title: `Nice, cozy, warm big bed apartment`,
-    image: `/img/apartment-01.jpg`,
-    price: 60,
-    rating: 90,
+    image: `/img/apartment-03.jpg`,
+    price: 20,
+    rating: 100,
     type: `Private room`,
     mark: ``,
     city: `Brussels`,
     coordinates: [
-      52.3809553943508, 4.939309666406198
+      52.3809553943508, 4.929309666401235
     ],
     properties: {
       entire: `Entire place`,

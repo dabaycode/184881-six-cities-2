@@ -2,7 +2,7 @@ import renderer from 'react-test-renderer';
 import PlaceCardList from './place-card-list';
 
 it(`Place card list correctly renders with 2 cards`, () => {
-  const tree = renderer.create(< PlaceCardList cards = {
+  const tree = renderer.create(< PlaceCardList onCardHover={jest.fn()} sort={`Popular`} cards = {
     [
       {
         id: 1,

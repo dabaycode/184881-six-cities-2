@@ -1,35 +1,53 @@
 import Main from '../main/main';
 import PlaceCardDetail from '../place-card-detail/place-card-detail';
 import {findCardById} from '../../utils';
-import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer';
 
-class App extends  React.PureComponent {
+class App extends React.PureComponent {
   constructor(props) {
     super(props);
   }
 
-  _getPageScreen(city, placeCards, actualCities, cityFilterClickHandler) {
-  
+  _getPageScreen() {
+
+    const {
+      city,
+      placeCards,
+      actualCities,
+      availableSorts,
+      sortType,
+      cityFilterClickHandler,
+      optionsClickHandler
+    } = this.props;
+
     const url = location
       .pathname
       .split(`/`);
-  
+
     switch (url[1]) {
       case `offer`:
         if (/\d+/.test(url[2])) {
-  
+
           const activeCard = findCardById(+url[2], placeCards);
-  
+
           if (activeCard) {
-  
-            const {title, image, price, rating, type, mark, properties, reviews, near} = activeCard;
+
+            const {
+              title,
+              image,
+              price,
+              rating,
+              type,
+              mark,
+              properties,
+              reviews,
+              near
+            } = activeCard;
             const nearCards = [];
-  
-            near.forEach((id)=> {
+
+            near.forEach((id) => {
               nearCards.push(findCardById(id, placeCards));
             });
-  
+
             return (<PlaceCardDetail
               title={title}
               image={image}
@@ -41,23 +59,27 @@ class App extends  React.PureComponent {
               nearCards={nearCards}
               offerProperties={properties}/>);
           }
-  
+
           return `404`;
         }
         break;
       default:
-        return (<Main placeCards={placeCards} currentCity={city} cities={actualCities} onCityFilterClick={cityFilterClickHandler}/>);
+        return (<Main
+          placeCards={placeCards}
+          currentCity={city}
+          cities={actualCities}
+          onCityFilterClick={cityFilterClickHandler}
+          onOprionsSortClick={optionsClickHandler}
+          availableSorts={availableSorts}
+          sortType={sortType}/>);
     }
-  
+
     return null;
   }
 
-
   render() {
-    const {city, placeCards, actualCities, cityFilterClickHandler} = this.props;
-
     return (
-      <>{this._getPageScreen(city, placeCards, actualCities, cityFilterClickHandler)}</>
+    <> { this._getPageScreen() } </>
     );
   }
 }
@@ -81,20 +103,10 @@ App.propTypes = {
       options: PropTypes.arrayOf(PropTypes.string.isRequired)
     })
   })),
+  availableSorts: PropTypes.arrayOf(PropTypes.string.isRequired),
+  sortType: PropTypes.string.isRequired,
+  cityFilterClickHandler: PropTypes.func.isRequired,
+  optionsClickHandler: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  city: state.city,
-  placeCards: state.offers,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  cityFilterClickHandler: (city) => {
-    dispatch(ActionCreator.changeCity(city));
-    dispatch(ActionCreator.getOffers(city));
-  }
-});
-
-export {App};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -10,8 +10,8 @@ const CitiesList = (props) => {
               className={`locations__item-link tabs__item ` + (item === currentCity && `tabs__item--active`)}
               href="#"
               onClick={() => {
-              onCityFilterClick(item)
-            }}>
+                onCityFilterClick(item);
+              }}>
               <span>{item}</span>
             </a>
           </li>
@@ -19,11 +19,12 @@ const CitiesList = (props) => {
       })}
     </ul>
   );
-}
+};
 
 export default CitiesList;
 
 CitiesList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string.isRequired),
   currentCity: PropTypes.string,
+  onCityFilterClick: PropTypes.func.isRequired
 };

@@ -1,20 +1,51 @@
 import PlaceCardList from '../place-card-list/place-card-list';
 import Map from '../map/map';
 import CitiesList from '../cities-list/cities-list';
+import PlacesOptionList from '../places-option-list/places-option-list';
 
 class Main extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isOptionsOpen: false,
+      hoveredCard: null
+    };
+
+    this._toggleSortOptions = this
+      ._toggleSortOptions
+      .bind(this);
+    this.hoverCardHandler = this
+      .hoverCardHandler
+      .bind(this);
   }
 
   componentDidMount() {
     const {currentCity, onCityFilterClick} = this.props;
-    
+
     onCityFilterClick(currentCity);
- }
+  }
+
+  _toggleSortOptions() {
+    this.setState({
+      isOptionsOpen: !this.state.isOptionsOpen
+    });
+  }
+
+  hoverCardHandler(id) {
+    this.setState(Object.assign({}, this.state, {hoveredCard: id}));
+  }
 
   render() {
-    const {currentCity, cities, placeCards, onCityFilterClick} = this.props;
+    const {
+      currentCity,
+      cities,
+      placeCards,
+      sortType,
+      onCityFilterClick,
+      onOprionsSortClick,
+      availableSorts
+    } = this.props;
 
     return (
       <div className="page page--gray page--main">
@@ -58,28 +89,33 @@ class Main extends React.PureComponent {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{[placeCards.length, ` `]} 
+                <b className="places__found">{[placeCards.length, ` `]}
                   places to stay in {[` `, currentCity]}</b>
                 <form className="places__sorting" action="#" method="get">
-                  <span className="places__sorting-caption">Sort by</span>
-                  <span className="places__sorting-type" tabIndex="0">
-                    Popular
+                  <span className="places__sorting-caption">Sort by
+                  </span>
+                  <span
+                    className="places__sorting-type"
+                    tabIndex="0"
+                    onClick={this._toggleSortOptions}>
+                    {sortType}
                     <svg className="places__sorting-arrow" width="7" height="4">
                       <use xlinkHref="#icon-arrow-select"></use>
                     </svg>
                   </span>
-                  <ul className="places__options places__options--custom places__options--opened">
-                    <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                    <li className="places__option" tabIndex="0">Price: low to high</li>
-                    <li className="places__option" tabIndex="0">Price: high to low</li>
-                    <li className="places__option" tabIndex="0">Top rated first</li>
-                  </ul>
+                  <PlacesOptionList
+                    isOpen={this.state.isOptionsOpen}
+                    onItemClick={onOprionsSortClick}
+                    availableSorts={availableSorts}/>
                 </form>
-                <PlaceCardList cards={placeCards}/>
+                <PlaceCardList
+                  sort={sortType}
+                  cards={placeCards}
+                  onCardHover={this.hoverCardHandler}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map cards={placeCards}/>
+                  <Map cards={placeCards} hoveredCard={this.state.hoveredCard}/>
                 </section>
               </div>
             </div>
@@ -93,7 +129,11 @@ class Main extends React.PureComponent {
 
 Main.propTypes = {
   currentCity: PropTypes.string.isRequired,
-  actualCities: PropTypes.arrayOf(PropTypes.string.isRequired),
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired),
+  sortType: PropTypes.string.isRequired,
+  onCityFilterClick: PropTypes.func.isRequired,
+  onOprionsSortClick: PropTypes.func.isRequired,
+  availableSorts: PropTypes.arrayOf(PropTypes.string.isRequired),
   placeCards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -109,7 +149,7 @@ Main.propTypes = {
       adults: PropTypes.number.isRequired,
       options: PropTypes.arrayOf(PropTypes.string.isRequired)
     })
-  })),
+  }))
 };
 
 export default Main;

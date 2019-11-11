@@ -101,14 +101,16 @@ exports[`Place card detail correctly renders with apartment data after relaunch 
           <li
             className="property__feature property__feature--bedrooms"
           >
-            3 
+            3
+             
             Bedrooms
           </li>
           <li
             className="property__feature property__feature--adults"
           >
             Max 
-            4 
+            4
+             
             adults
           </li>
         </ul>
