@@ -35,7 +35,6 @@ class Map extends React.PureComponent {
 
     this.state = {
       cards: this.props.cards,
-      hoveredCard: this.props.hoveredCard,
     };
   }
 
@@ -48,7 +47,7 @@ class Map extends React.PureComponent {
       .state
       .cards
       .forEach((card) => {
-        if (this.state.hoveredCard && (card.id === this.state.hoveredCard)) {
+        if (this.props.activeItem && (card.id === this.props.activeItem.id)) {
           Leaflet
             .marker(card.coordinates, {icon: this._iconActive})
             .addTo(this._markerGroup);
@@ -87,7 +86,8 @@ class Map extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    this.setState({cards: this.props.cards, hoveredCard: this.props.hoveredCard});
+    this.props.onSelectActiveElement(this.props.hoveredCard);
+    this.setState({cards: this.props.cards});
 
     this
       ._map
@@ -117,7 +117,9 @@ Map.propTypes = {
   mapIconSize: PropTypes.arrayOf(PropTypes.number.isRequired),
   mapZoom: PropTypes.number,
   mapCityCoords: PropTypes.arrayOf(PropTypes.number.isRequired),
-  hoveredCard: PropTypes.number,
+  hoveredCard: PropTypes.object,
+  activeItem: PropTypes.object,
+  onSelectActiveElement: PropTypes.func.isRequired,
   cards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
