@@ -2,9 +2,9 @@ class PlacesOptionList extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeItem: this.props.availableSorts[0],
-    };
+    // this.state = {
+    //   activeItem: this.props.availableSorts[0],
+    // };
   }
 
   render() {
@@ -17,11 +17,11 @@ class PlacesOptionList extends React.PureComponent {
         {availableSorts.map((item) => {
           return (
             <li
-              className={`places__option ` + ((this.state.activeItem === item) && `places__option--active`)}
+              className={`places__option ` + ((this.props.activeItem === item) && `places__option--active`)}
               tabIndex="0"
               onClick={() => {
                 onItemClick(item);
-                this.setState({activeItem: item});
+                this.props.onSelectActiveElement(item);
               }}
               key={`sort-` + item}>{item}</li>
           );
@@ -34,6 +34,8 @@ class PlacesOptionList extends React.PureComponent {
 export default PlacesOptionList;
 
 PlacesOptionList.propTypes = {
+  onSelectActiveElement: PropTypes.func.isRequired,
+  activeItem: PropTypes.string.isRequired,
   availableSorts: PropTypes.arrayOf(PropTypes.string.isRequired),
   isOpen: PropTypes.bool,
   onItemClick: PropTypes.func.isRequired,

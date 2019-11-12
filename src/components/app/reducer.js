@@ -3,7 +3,8 @@ import mockOffers from '../../mocks/offers';
 export const INITIAL_STATE = {
   city: `Amsterdam`,
   sortType: `Popular`,
-  offers: mockOffers
+  offers: mockOffers,
+  activeCard: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +17,9 @@ export default (state = INITIAL_STATE, action) => {
 
     case `CHANGE_SORT_TYPE`:
       return Object.assign({}, state, {sortType: action.payload});
+
+    case `SET_ACTIVE_CARD`:
+      return Object.assign({}, state, {activeCard: action.payload});
 
     case `RESET`:
       return Object.assign({}, INITIAL_STATE);

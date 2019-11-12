@@ -5,7 +5,8 @@ import App from './app';
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   city: state.app.city,
   placeCards: state.app.offers,
-  sortType: state.app.sortType
+  sortType: state.app.sortType,
+  activeCard: state.app.activeCard
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,6 +17,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   optionsClickHandler: (option) => {
     dispatch(ActionCreator.changeSortType(option));
+  },
+
+  cardHoverHandler: (card) => {
+    dispatch(ActionCreator.setActiveCard(card));
   }
 });
 

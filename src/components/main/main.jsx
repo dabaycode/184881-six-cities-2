@@ -2,22 +2,25 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import Map from '../map/map';
 import CitiesList from '../cities-list/cities-list';
 import PlacesOptionList from '../places-option-list/places-option-list';
+import withActiveItem from '../../hocs/withActiveItem';
 
 class Main extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      isOptionsOpen: false,
-      hoveredCard: null
+      isOptionsOpen: false
     };
 
     this._toggleSortOptions = this
       ._toggleSortOptions
       .bind(this);
-    this.hoverCardHandler = this
-      .hoverCardHandler
-      .bind(this);
+
+    this.OptionList = withActiveItem(PlacesOptionList);
+    this.PlaceCardList = withActiveItem(PlaceCardList);
+    this.Map = withActiveItem(Map);
+    this.CitiesList = withActiveItem(CitiesList);
+
   }
 
   componentDidMount() {
@@ -32,19 +35,17 @@ class Main extends React.PureComponent {
     });
   }
 
-  hoverCardHandler(id) {
-    this.setState(Object.assign({}, this.state, {hoveredCard: id}));
-  }
-
   render() {
     const {
       currentCity,
       cities,
       placeCards,
       sortType,
+      activeCard,
       onCityFilterClick,
       onOprionsSortClick,
-      availableSorts
+      availableSorts,
+      onCardHover
     } = this.props;
 
     return (
@@ -79,8 +80,8 @@ class Main extends React.PureComponent {
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
-              <CitiesList
-                currentCity={currentCity}
+              <this.CitiesList
+                activeItem={currentCity}
                 cities={cities}
                 onCityFilterClick={onCityFilterClick}/>
             </section>
@@ -103,19 +104,30 @@ class Main extends React.PureComponent {
                       <use xlinkHref="#icon-arrow-select"></use>
                     </svg>
                   </span>
-                  <PlacesOptionList
-                    isOpen={this.state.isOptionsOpen}
-                    onItemClick={onOprionsSortClick}
-                    availableSorts={availableSorts}/>
+                  {
+                    <this.OptionList
+                      isOpen = {
+                        this.state.isOptionsOpen
+                      }
+                      onItemClick = {
+                        onOprionsSortClick
+                      }
+                      availableSorts = {
+                        availableSorts
+                      }
+                      activeItem = {
+                        availableSorts[0]
+                      }/>
+                  }
                 </form>
-                <PlaceCardList
+                <this.PlaceCardList
                   sort={sortType}
                   cards={placeCards}
-                  onCardHover={this.hoverCardHandler}/>
+                  onCardHover={onCardHover}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map cards={placeCards} hoveredCard={this.state.hoveredCard}/>
+                  <this.Map cards={placeCards} hoveredCard={activeCard}/>
                 </section>
               </div>
             </div>
@@ -134,6 +146,8 @@ Main.propTypes = {
   onCityFilterClick: PropTypes.func.isRequired,
   onOprionsSortClick: PropTypes.func.isRequired,
   availableSorts: PropTypes.arrayOf(PropTypes.string.isRequired),
+  activeCard: PropTypes.object,
+  onCardHover: PropTypes.func.isRequired,
   placeCards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

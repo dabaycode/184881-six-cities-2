@@ -14,9 +14,11 @@ class App extends React.PureComponent {
       placeCards,
       actualCities,
       availableSorts,
+      activeCard,
       sortType,
       cityFilterClickHandler,
-      optionsClickHandler
+      optionsClickHandler,
+      cardHoverHandler
     } = this.props;
 
     const url = location
@@ -27,9 +29,9 @@ class App extends React.PureComponent {
       case `offer`:
         if (/\d+/.test(url[2])) {
 
-          const activeCard = findCardById(+url[2], placeCards);
+          const currentCard = findCardById(+url[2], placeCards);
 
-          if (activeCard) {
+          if (currentCard) {
 
             const {
               title,
@@ -41,7 +43,7 @@ class App extends React.PureComponent {
               properties,
               reviews,
               near
-            } = activeCard;
+            } = currentCard;
             const nearCards = [];
 
             near.forEach((id) => {
@@ -65,13 +67,15 @@ class App extends React.PureComponent {
         break;
       default:
         return (<Main
+          activeCard={activeCard}
           placeCards={placeCards}
           currentCity={city}
           cities={actualCities}
           onCityFilterClick={cityFilterClickHandler}
           onOprionsSortClick={optionsClickHandler}
           availableSorts={availableSorts}
-          sortType={sortType}/>);
+          sortType={sortType}
+          onCardHover={cardHoverHandler}/>);
     }
 
     return null;
@@ -87,6 +91,7 @@ class App extends React.PureComponent {
 App.propTypes = {
   city: PropTypes.string.isRequired,
   actualCities: PropTypes.arrayOf(PropTypes.string.isRequired),
+  activeCard: PropTypes.object,
   placeCards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -107,6 +112,7 @@ App.propTypes = {
   sortType: PropTypes.string.isRequired,
   cityFilterClickHandler: PropTypes.func.isRequired,
   optionsClickHandler: PropTypes.func.isRequired,
+  cardHoverHandler: PropTypes.func.isRequired,
 };
 
 export default App;

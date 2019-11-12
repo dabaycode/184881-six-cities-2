@@ -10,5 +10,7 @@ export default {
       .filter((item) => item.city === city)
   }),
 
-  changeSortType: (option) => ({type: `CHANGE_SORT_TYPE`, payload: option})
+  changeSortType: (option) => ({type: `CHANGE_SORT_TYPE`, payload: option}),
+
+  setActiveCard: (card) => ({type: `SET_ACTIVE_CARD`, payload: card}),
 };

@@ -1,5 +1,5 @@
 const CitiesList = (props) => {
-  const {cities, currentCity, onCityFilterClick} = props;
+  const {cities, activeItem, onCityFilterClick, onSelectActiveElement} = props;
 
   return (
     <ul className="locations__list tabs__list">
@@ -7,10 +7,11 @@ const CitiesList = (props) => {
         return (
           <li className="locations__item" key={`city-` + item}>
             <a
-              className={`locations__item-link tabs__item ` + (item === currentCity && `tabs__item--active`)}
+              className={`locations__item-link tabs__item ` + (item === activeItem && `tabs__item--active`)}
               href="#"
               onClick={() => {
                 onCityFilterClick(item);
+                onSelectActiveElement(item);
               }}>
               <span>{item}</span>
             </a>
@@ -25,6 +26,7 @@ export default CitiesList;
 
 CitiesList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string.isRequired),
-  currentCity: PropTypes.string,
-  onCityFilterClick: PropTypes.func.isRequired
+  activeItem: PropTypes.string,
+  onCityFilterClick: PropTypes.func.isRequired,
+  onSelectActiveElement: PropTypes.func.isRequired,
 };
