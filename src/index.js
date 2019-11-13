@@ -1,7 +1,7 @@
 import store from './store';
 import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom';
-import App from 'Components/app/app.connect';
+import App from './components/app/app.connect';
 import rentMockList from './mocks/offers';
 import {getActualCities} from './utils';
 
@@ -20,7 +20,8 @@ const init = () => {
           placeCards={rentMockList}
           actualCities={actualCities}
           availableSorts={AVAILABLE_SORTS}
-          cityFilterClickHandler={() => {}}/>
+          cityFilterClickHandler={() => {}}
+          onCardHover={() => {}}/>
       </Provider>, document.getElementById(`root`)
   );
 };

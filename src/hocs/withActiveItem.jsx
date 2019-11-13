@@ -1,5 +1,5 @@
 const withActiveItem = (Component) => {
-  return class withActiveItemClass extends React.PureComponent {
+  class withActiveItemClass extends React.PureComponent {
 
     constructor(props) {
       super(props);
@@ -23,14 +23,16 @@ const withActiveItem = (Component) => {
         activeItem={this.state.activeItem}
         onSelectActiveElement={this.setStateHandler}/>);
     }
-  };
-};
+  }
 
-withActiveItem.propTypes = {
-  activeItem: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string
-  ]),
+  withActiveItemClass.propTypes = {
+    activeItem: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string
+    ]),
+  };
+
+  return withActiveItemClass;
 };
 
 export default withActiveItem;

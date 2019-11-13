@@ -1,3 +1,5 @@
+import withActiveItem from '../../hocs/withActiveItem';
+
 class PlacesOptionList extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -31,7 +33,7 @@ class PlacesOptionList extends React.PureComponent {
   }
 }
 
-export default PlacesOptionList;
+export default withActiveItem(PlacesOptionList);
 
 PlacesOptionList.propTypes = {
   onSelectActiveElement: PropTypes.func.isRequired,
