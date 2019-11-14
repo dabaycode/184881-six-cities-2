@@ -1,7 +1,7 @@
 // import mockOffers from '../../mocks/offers';
 
 export const INITIAL_STATE = {
-  city: ``,
+  city: null,
   sortType: `Popular`,
   initOffers: [],
   offers: [],

@@ -9,7 +9,7 @@ const init = () => {
   ReactDOM.render(
       <Provider store={store}>
         <App
-          city={``}
+          city={null}
           placeCards={[]}
           actualCities={[]}
           availableSorts={AVAILABLE_SORTS}

@@ -1,4 +1,3 @@
-import {INITIAL_STATE} from './reducer';
 import dataAdapter from './data-adapter';
 import {getActualCities} from '../../utils';
 
