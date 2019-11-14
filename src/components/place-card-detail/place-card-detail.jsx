@@ -4,8 +4,10 @@ import Map from '../map/map';
 
 const PlaceCardDetail = (props) => {
   const {
+    id,
     title,
     image,
+    images,
     price,
     rating,
     mark,
@@ -20,7 +22,12 @@ const PlaceCardDetail = (props) => {
         <div className="property__gallery-container container">
           <div className="property__gallery">
             <div className="property__image-wrapper">
-              <img className="property__image" src={image} alt="Photo studio"/>
+              {images.map((item, index) => {
+                return (
+                  <img className="property__image" src={item} key={`card-` + id + `-photo-` + index} alt="Photo studio"/>
+                );
+              })}
+              
             </div>
           </div>
         </div>

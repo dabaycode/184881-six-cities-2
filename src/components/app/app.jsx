@@ -7,6 +7,10 @@ class App extends React.PureComponent {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.loadOffers();
+  }
+
   _getPageScreen() {
 
     const {
@@ -36,6 +40,7 @@ class App extends React.PureComponent {
             const {
               title,
               image,
+              images,
               price,
               rating,
               type,
@@ -53,6 +58,7 @@ class App extends React.PureComponent {
             return (<PlaceCardDetail
               title={title}
               image={image}
+              images={images}
               price={price}
               rating={rating}
               type={type}
