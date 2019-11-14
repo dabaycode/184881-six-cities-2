@@ -5,6 +5,7 @@ import App from './app';
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   city: state.app.city,
   placeCards: state.app.offers,
+  initOffers: state.app.initOffers,
   sortType: state.app.sortType,
   activeCard: state.app.activeCard,
   actualCities: state.app.actualCities,

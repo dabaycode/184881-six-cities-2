@@ -16,6 +16,7 @@ class App extends React.PureComponent {
     const {
       city,
       placeCards,
+      initOffers,
       actualCities,
       availableSorts,
       activeCard,
@@ -33,7 +34,7 @@ class App extends React.PureComponent {
       case `offer`:
         if (/\d+/.test(url[2])) {
 
-          const currentCard = findCardById(+url[2], placeCards);
+          const currentCard = findCardById(+url[2], initOffers);
 
           if (currentCard) {
 
