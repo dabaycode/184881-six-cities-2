@@ -4,6 +4,6 @@ import thunk from 'redux-thunk';
 import {compose} from 'recompose';
 import {createAPI} from '../api';
 
-const api = createAPI((...args) => store.dispatch(...args));
+const api = createAPI((store, ...args) => store.dispatch(...args));
 
 export default createStore(rootReducer, compose(applyMiddleware(thunk.withExtraArgument(api)), window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f));

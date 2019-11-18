@@ -1,33 +1,27 @@
 import withActiveItem from '../../hocs/withActiveItem';
 
-class CitiesList extends React.PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const CitiesList = (props) => {
+  const {cities, activeItem, onCityFilterClick, onSelectActiveElement} = props;
 
-  render() {
-    const {cities, activeItem, onCityFilterClick, onSelectActiveElement} = this.props;
-
-    return (
-      <ul className="locations__list tabs__list">
-        {cities.map((item) => {
-          return (
-            <li className="locations__item" key={`city-` + item}>
-              <a
-                className={`locations__item-link tabs__item ` + (item === activeItem && `tabs__item--active`)}
-                href="#"
-                onClick={() => {
+  return (
+    <ul className="locations__list tabs__list">
+      {cities.map((item) => {
+        return (
+          <li className="locations__item" key={`city-` + item}>
+            <a
+              className={`locations__item-link tabs__item ` + (item === activeItem && `tabs__item--active`)}
+              href="#"
+              onClick={() => {
                 onCityFilterClick(item);
                 onSelectActiveElement(item);
               }}>
-                <span>{item}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  }
+              <span>{item}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  );
 };
 
 export default withActiveItem(CitiesList);
@@ -36,5 +30,5 @@ CitiesList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string.isRequired),
   activeItem: PropTypes.string,
   onCityFilterClick: PropTypes.func.isRequired,
-  onSelectActiveElement: PropTypes.func.isRequired
+  onSelectActiveElement: PropTypes.func.isRequired,
 };

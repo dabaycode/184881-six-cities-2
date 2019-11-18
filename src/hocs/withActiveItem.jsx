@@ -20,7 +20,7 @@ const withActiveItem = (Component) => {
     render() {
       return (<Component
         {...this.props}
-        activeItem={this.state.activeItem}
+        activeItem={this.state.activeItem ? this.state.activeItem : this.props.activeItem}
         onSelectActiveElement={this.setStateHandler}/>);
     }
   }

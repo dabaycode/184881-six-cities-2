@@ -6,7 +6,10 @@ it(`Cities list correctly renders with mock cities after relaunch`, () => {
     .create(<CitiesList
       cities={[`Amsterdam`, `Moscow`]}
       currentCity={`Moscow`}
-      onCityFilterClick={jest.fn()}/>)
+      onCityFilterClick={jest.fn()}
+      onSelectActiveElement={jest.fn()}
+    />)
+
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

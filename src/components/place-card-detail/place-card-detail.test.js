@@ -4,12 +4,14 @@ import PlaceCardDetail from './place-card-detail';
 it(`Place card detail correctly renders with apartment data after relaunch`, () => {
   const tree = renderer
     .create(<PlaceCardDetail
+      id={1}
       title={`Beautiful & luxurious apartment at great location`}
       image={`/img/apartment-01.jpg`}
       price={80}
       rating={13}
       type={`Private room`}
       mark={`Premium`}
+      images={[`/img/apartment-01.jpg`]}
       offerProperties={{
         entire: `Entire place`,
         bedrooms: 3,

@@ -76,7 +76,8 @@ class Main extends React.PureComponent {
               <CitiesList
                 activeItem={currentCity}
                 cities={cities}
-                onCityFilterClick={onCityFilterClick}/>
+                onCityFilterClick={onCityFilterClick}
+              />
             </section>
           </div>
           <div className="cities">

@@ -1,7 +1,6 @@
-// import mockOffers from '../../mocks/offers';
 
 export const INITIAL_STATE = {
-  city: null,
+  city: ``,
   sortType: `Popular`,
   initOffers: [],
   offers: [],
@@ -15,11 +14,11 @@ export default (state = INITIAL_STATE, action) => {
       return Object.assign({}, state, {city: action.payload});
 
     case `SET_INIT_OFFERS`:
-        return Object.assign({}, state, {initOffers: action.payload});
+      return Object.assign({}, state, {initOffers: action.payload});
 
     case `CHANGE_OFFERS`:
       return Object.assign({}, state, {offers: action.payload});
-    
+
     case `CHANGE_ACTUAL_CITIES`:
       return Object.assign({}, state, {actualCities: action.payload});
 

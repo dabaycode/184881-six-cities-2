@@ -5,7 +5,6 @@ import {findCardById} from '../../utils';
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
-    
   }
 
   componentDidMount() {
@@ -100,6 +99,23 @@ App.propTypes = {
   city: PropTypes.string.isRequired,
   actualCities: PropTypes.arrayOf(PropTypes.string.isRequired),
   activeCard: PropTypes.object,
+  loadOffers: PropTypes.func,
+  initOffers: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    mark: PropTypes.string.isRequired,
+    near: PropTypes.arrayOf(PropTypes.number.isRequired),
+    properties: PropTypes.shape({
+      entire: PropTypes.string.isRequired,
+      bedrooms: PropTypes.number.isRequired,
+      adults: PropTypes.number.isRequired,
+      options: PropTypes.arrayOf(PropTypes.string.isRequired)
+    })
+  })),
   placeCards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

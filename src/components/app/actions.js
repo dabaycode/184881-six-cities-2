@@ -4,7 +4,7 @@ import {getActualCities} from '../../utils';
 export const changeCity = (city) => ({type: `CHANGE_CITY`, payload: city});
 
 export const getOffers = (dispatch, getState) => {
-  dispatch ({
+  dispatch({
     type: `CHANGE_OFFERS`,
     payload: getState()
       .app
@@ -18,7 +18,7 @@ export const changeSortType = (option) => ({type: `CHANGE_SORT_TYPE`, payload: o
 export const setActiveCard = (card) => ({type: `SET_ACTIVE_CARD`, payload: card});
 
 export const init = (dispatch, getState, api) => {
-  api
+  return api
     .get(`/hotels`)
     .then((respond) => {
       const offers = dataAdapter(respond.data);
