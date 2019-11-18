@@ -4,8 +4,9 @@ import Map from '../map/map';
 
 const PlaceCardDetail = (props) => {
   const {
+    id,
     title,
-    image,
+    images,
     price,
     rating,
     mark,
@@ -20,7 +21,11 @@ const PlaceCardDetail = (props) => {
         <div className="property__gallery-container container">
           <div className="property__gallery">
             <div className="property__image-wrapper">
-              <img className="property__image" src={image} alt="Photo studio"/>
+              {images.map((item, index) => {
+                return (
+                  <img className="property__image" src={item} key={`card-` + id + `-photo-` + index} alt="Photo studio"/>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -227,11 +232,13 @@ const PlaceCardDetail = (props) => {
 };
 
 PlaceCardDetail.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
   mark: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
   reviews: PropTypes.arrayOf(PropTypes.shape({
     user: PropTypes.shape({name: PropTypes.string.isRequired, photo: PropTypes.string.isRequired}),
     rating: PropTypes.number.isRequired,

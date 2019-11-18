@@ -30,7 +30,7 @@ it(`Heandler run when correct data`, () => {
     onCardHover={() => hoverHandler(mockCard)}
     onCardHoverOut={()=>{}}/>);
   const card = placeOfferCard.find(`.place-card`);
-  card.simulate(`mouseenter`);
+  card.simulate(`mouseover`);
   expect(hoverHandler).toBeCalledWith(expect.objectContaining({
     id: expect.any(Number),
     title: expect.any(String),

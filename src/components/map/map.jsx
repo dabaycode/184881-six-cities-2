@@ -1,4 +1,5 @@
 import Leaflet from 'leaflet';
+import withActiveItem from '../../hocs/withActiveItem';
 
 class Map extends React.PureComponent {
   constructor(props) {
@@ -109,7 +110,7 @@ class Map extends React.PureComponent {
   }
 }
 
-export default Map;
+export default withActiveItem(Map);
 
 Map.propTypes = {
   mapIconUrl: PropTypes.string,

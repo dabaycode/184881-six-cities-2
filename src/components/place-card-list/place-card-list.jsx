@@ -1,4 +1,5 @@
 import PlaceCard from '../place-card/place-card';
+import withActiveItem from '../../hocs/withActiveItem';
 
 class PlaceCardList extends React.PureComponent {
   constructor(props) {
@@ -68,7 +69,7 @@ class PlaceCardList extends React.PureComponent {
   }
 }
 
-export default PlaceCardList;
+export default withActiveItem(PlaceCardList);
 
 PlaceCardList.propTypes = {
   cards: PropTypes.array.isRequired,

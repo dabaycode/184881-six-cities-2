@@ -1,18 +1,20 @@
 import {connect} from 'react-redux';
-import ActionCreator from './actions';
+import * as ActionCreator from './actions';
 import App from './app';
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   city: state.app.city,
   placeCards: state.app.offers,
+  initOffers: state.app.initOffers,
   sortType: state.app.sortType,
-  activeCard: state.app.activeCard
+  activeCard: state.app.activeCard,
+  actualCities: state.app.actualCities,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   cityFilterClickHandler: (city) => {
     dispatch(ActionCreator.changeCity(city));
-    dispatch(ActionCreator.getOffers(city));
+    dispatch((...args) => ActionCreator.getOffers(...args));
   },
 
   optionsClickHandler: (option) => {
@@ -21,7 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   cardHoverHandler: (card) => {
     dispatch(ActionCreator.setActiveCard(card));
-  }
+  },
+
+  loadOffers: () => dispatch((...args) => ActionCreator.init(...args)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

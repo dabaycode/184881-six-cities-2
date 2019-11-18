@@ -5,6 +5,7 @@ it(`Places option list correctly renders with data`, () => {
   const tree = renderer
     .create(<PlacesOptionList
       isOpen={true}
+      activeItem={`Popular`}
       availableSorts={[`Popular`, `New`]}
       onItemClick={jest.fn()}/>)
     .toJSON();

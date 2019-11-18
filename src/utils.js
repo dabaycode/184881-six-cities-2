@@ -1,7 +1,7 @@
 const findCardById = (id, cards) => cards.find((item) => item.id === id);
 
 const getActualCities = (offers) => {
-  let cities = [];
+  const cities = [];
 
   offers.forEach((item) => {
     cities.push(item.city);

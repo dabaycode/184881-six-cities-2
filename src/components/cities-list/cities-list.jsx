@@ -1,3 +1,5 @@
+import withActiveItem from '../../hocs/withActiveItem';
+
 const CitiesList = (props) => {
   const {cities, activeItem, onCityFilterClick, onSelectActiveElement} = props;
 
@@ -22,7 +24,7 @@ const CitiesList = (props) => {
   );
 };
 
-export default CitiesList;
+export default withActiveItem(CitiesList);
 
 CitiesList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string.isRequired),

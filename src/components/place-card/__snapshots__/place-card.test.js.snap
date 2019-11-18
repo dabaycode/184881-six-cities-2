@@ -3,8 +3,8 @@
 exports[`Place card correctly renders with 1 apartment for rent after relaunch 1`] = `
 <article
   className="cities__place-card place-card"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
 >
   <div
     className="place-card__mark"

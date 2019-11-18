@@ -500,8 +500,8 @@ exports[`Place card detail correctly renders with apartment data after relaunch 
       >
         <article
           className="near-places__card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
           
           <div

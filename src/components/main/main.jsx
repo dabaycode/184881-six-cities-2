@@ -2,7 +2,6 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import Map from '../map/map';
 import CitiesList from '../cities-list/cities-list';
 import PlacesOptionList from '../places-option-list/places-option-list';
-import withActiveItem from '../../hocs/withActiveItem';
 
 class Main extends React.PureComponent {
   constructor(props) {
@@ -15,12 +14,6 @@ class Main extends React.PureComponent {
     this._toggleSortOptions = this
       ._toggleSortOptions
       .bind(this);
-
-    this.OptionList = withActiveItem(PlacesOptionList);
-    this.PlaceCardList = withActiveItem(PlaceCardList);
-    this.Map = withActiveItem(Map);
-    this.CitiesList = withActiveItem(CitiesList);
-
   }
 
   componentDidMount() {
@@ -80,10 +73,11 @@ class Main extends React.PureComponent {
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
-              <this.CitiesList
+              <CitiesList
                 activeItem={currentCity}
                 cities={cities}
-                onCityFilterClick={onCityFilterClick}/>
+                onCityFilterClick={onCityFilterClick}
+              />
             </section>
           </div>
           <div className="cities">
@@ -105,7 +99,7 @@ class Main extends React.PureComponent {
                     </svg>
                   </span>
                   {
-                    <this.OptionList
+                    <PlacesOptionList
                       isOpen = {
                         this.state.isOptionsOpen
                       }
@@ -120,14 +114,14 @@ class Main extends React.PureComponent {
                       }/>
                   }
                 </form>
-                <this.PlaceCardList
+                <PlaceCardList
                   sort={sortType}
                   cards={placeCards}
                   onCardHover={onCardHover}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <this.Map cards={placeCards} hoveredCard={activeCard}/>
+                  <Map cards={placeCards} hoveredCard={activeCard}/>
                 </section>
               </div>
             </div>
