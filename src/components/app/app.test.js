@@ -5,6 +5,8 @@ import mockCards from '../../mocks/offers';
 it(`App correctly renders with mock apartments for rent after relaunch`, () => {
   const tree = renderer
     .create(<App
+      user={{email: `test@test.ru`}}
+      isAuthorizationRequired={false}
       placeCards={mockCards}
       cityFilterClickHandler={jest.fn()}
       city={`Amsterdam`}

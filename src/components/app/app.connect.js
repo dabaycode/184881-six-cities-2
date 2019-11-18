@@ -9,6 +9,8 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   sortType: state.app.sortType,
   activeCard: state.app.activeCard,
   actualCities: state.app.actualCities,
+  isAuthorizationRequired: state.app.isAuthorizationRequired,
+  user: state.app.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({

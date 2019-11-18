@@ -14,6 +14,7 @@ class App extends React.PureComponent {
   _getPageScreen() {
 
     const {
+      user,
       city,
       placeCards,
       initOffers,
@@ -23,7 +24,8 @@ class App extends React.PureComponent {
       sortType,
       cityFilterClickHandler,
       optionsClickHandler,
-      cardHoverHandler
+      cardHoverHandler,
+      isAuthorizationRequired
     } = this.props;
 
     const url = location
@@ -82,7 +84,9 @@ class App extends React.PureComponent {
           onOprionsSortClick={optionsClickHandler}
           availableSorts={availableSorts}
           sortType={sortType}
-          onCardHover={cardHoverHandler}/>);
+          onCardHover={cardHoverHandler}
+          isAuthorizationRequired={isAuthorizationRequired}
+          user={user}/>);
     }
 
     return null;
@@ -96,6 +100,7 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
+  user: PropTypes.object,
   city: PropTypes.string.isRequired,
   actualCities: PropTypes.arrayOf(PropTypes.string.isRequired),
   activeCard: PropTypes.object,
@@ -137,6 +142,7 @@ App.propTypes = {
   cityFilterClickHandler: PropTypes.func.isRequired,
   optionsClickHandler: PropTypes.func.isRequired,
   cardHoverHandler: PropTypes.func.isRequired,
+  isAuthorizationRequired: PropTypes.bool.isRequired
 };
 
 export default App;
