@@ -2,6 +2,7 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import Map from '../map/map';
 import CitiesList from '../cities-list/cities-list';
 import PlacesOptionList from '../places-option-list/places-option-list';
+import SignIn from '../sign-in/sign-in.connect';
 
 class Main extends React.PureComponent {
   constructor(props) {
@@ -38,8 +39,84 @@ class Main extends React.PureComponent {
       onCityFilterClick,
       onOprionsSortClick,
       availableSorts,
-      onCardHover
+      onCardHover,
+      isAuthorizationRequired,
+      user
     } = this.props;
+
+    let main;
+    let userBlock;
+
+    if (isAuthorizationRequired) {
+      main = <SignIn />;
+      userBlock = `Sign In`;
+    } else {
+      userBlock =
+        <>
+          <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+          <span className="header__user-name user__name">{user.email}</span>
+        </>
+      ;
+
+      main = <main className="page__main page__main--index">
+        <h1 className="visually-hidden">Cities</h1>
+        <div className="tabs">
+          <section className="locations container">
+            <CitiesList
+              activeItem={currentCity}
+              cities={cities}
+              onCityFilterClick={onCityFilterClick}
+            />
+          </section>
+        </div>
+        <div className="cities">
+          <div className="cities__places-container container">
+            <section className="cities__places places">
+              <h2 className="visually-hidden">Places</h2>
+              <b className="places__found">{[placeCards.length, ` `]}
+              places to stay in {[` `, currentCity]}</b>
+              <form className="places__sorting" action="#" method="get">
+                <span className="places__sorting-caption">Sort by
+                </span>
+                <span
+                  className="places__sorting-type"
+                  tabIndex="0"
+                  onClick={this._toggleSortOptions}>
+                  {sortType}
+                  <svg className="places__sorting-arrow" width="7" height="4">
+                    <use xlinkHref="#icon-arrow-select"></use>
+                  </svg>
+                </span>
+                {
+                  <PlacesOptionList
+                    isOpen = {
+                      this.state.isOptionsOpen
+                    }
+                    onItemClick = {
+                      onOprionsSortClick
+                    }
+                    availableSorts = {
+                      availableSorts
+                    }
+                    activeItem = {
+                      availableSorts[0]
+                    }/>
+                }
+              </form>
+              <PlaceCardList
+                sort={sortType}
+                cards={placeCards}
+                onCardHover={onCardHover}/>
+            </section>
+            <div className="cities__right-section">
+              <section className="cities__map map">
+                <Map cards={placeCards} hoveredCard={activeCard}/>
+              </section>
+            </div>
+          </div>
+        </div>
+      </main>;
+    }
 
     return (
       <div className="page page--gray page--main">
@@ -60,8 +137,7 @@ class Main extends React.PureComponent {
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
                     <a className="header__nav-link header__nav-link--profile" href="#">
-                      <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                      {userBlock}
                     </a>
                   </li>
                 </ul>
@@ -69,64 +145,7 @@ class Main extends React.PureComponent {
             </div>
           </div>
         </header>
-        <main className="page__main page__main--index">
-          <h1 className="visually-hidden">Cities</h1>
-          <div className="tabs">
-            <section className="locations container">
-              <CitiesList
-                activeItem={currentCity}
-                cities={cities}
-                onCityFilterClick={onCityFilterClick}
-              />
-            </section>
-          </div>
-          <div className="cities">
-            <div className="cities__places-container container">
-              <section className="cities__places places">
-                <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{[placeCards.length, ` `]}
-                  places to stay in {[` `, currentCity]}</b>
-                <form className="places__sorting" action="#" method="get">
-                  <span className="places__sorting-caption">Sort by
-                  </span>
-                  <span
-                    className="places__sorting-type"
-                    tabIndex="0"
-                    onClick={this._toggleSortOptions}>
-                    {sortType}
-                    <svg className="places__sorting-arrow" width="7" height="4">
-                      <use xlinkHref="#icon-arrow-select"></use>
-                    </svg>
-                  </span>
-                  {
-                    <PlacesOptionList
-                      isOpen = {
-                        this.state.isOptionsOpen
-                      }
-                      onItemClick = {
-                        onOprionsSortClick
-                      }
-                      availableSorts = {
-                        availableSorts
-                      }
-                      activeItem = {
-                        availableSorts[0]
-                      }/>
-                  }
-                </form>
-                <PlaceCardList
-                  sort={sortType}
-                  cards={placeCards}
-                  onCardHover={onCardHover}/>
-              </section>
-              <div className="cities__right-section">
-                <section className="cities__map map">
-                  <Map cards={placeCards} hoveredCard={activeCard}/>
-                </section>
-              </div>
-            </div>
-          </div>
-        </main>
+        {main}
       </div>
     );
 
@@ -134,6 +153,7 @@ class Main extends React.PureComponent {
 }
 
 Main.propTypes = {
+  user: PropTypes.object,
   currentCity: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string.isRequired),
   sortType: PropTypes.string.isRequired,
@@ -142,6 +162,7 @@ Main.propTypes = {
   availableSorts: PropTypes.arrayOf(PropTypes.string.isRequired),
   activeCard: PropTypes.object,
   onCardHover: PropTypes.func.isRequired,
+  isAuthorizationRequired: PropTypes.bool.isRequired,
   placeCards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

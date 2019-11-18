@@ -6,6 +6,8 @@ export const INITIAL_STATE = {
   offers: [],
   activeCard: null,
   actualCities: [],
+  isAuthorizationRequired: true,
+  user: {}
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -27,6 +29,12 @@ export default (state = INITIAL_STATE, action) => {
 
     case `SET_ACTIVE_CARD`:
       return Object.assign({}, state, {activeCard: action.payload});
+
+    case `CHANGE_LOGIN_STATUS`:
+      return Object.assign({}, state, {isAuthorizationRequired: action.payload});
+
+    case `SET_USER_INFO`:
+      return Object.assign({}, state, {user: action.payload});
 
     case `RESET`:
       return Object.assign({}, INITIAL_STATE);
