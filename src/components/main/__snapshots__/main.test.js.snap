@@ -47,7 +47,7 @@ exports[`Main screen correctly renders with mock apartments for rent after relau
                 <span
                   className="header__user-name user__name"
                 >
-                  Oliver.conner@gmail.com
+                  test@test.ru
                 </span>
               </a>
             </li>

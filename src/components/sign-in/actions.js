@@ -1,5 +1,9 @@
-export const login = (state, dispatch, getState, api) => {
+export const changeLoginRequired = (isRequired) => ({
+  type: `CHANGE_LOGIN_STATUS`,
+  payload: isRequired
+});
 
+export const login = (state, dispatch, getState, api) => {
   return api
     .post(`/login`, {
       email: state.login,
@@ -7,10 +11,7 @@ export const login = (state, dispatch, getState, api) => {
     })
     .then((respond) => {
       if (respond.status === 200) {
-        dispatch({
-          type: `CHANGE_LOGIN_STATUS`,
-          payload: !getState().app.isAuthorizationRequired
-        });
+        dispatch(changeLoginRequired(!getState().app.isAuthorizationRequired));
 
         dispatch({
           type: `SET_USER_INFO`,

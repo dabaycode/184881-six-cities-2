@@ -1,8 +1,4 @@
 import appReducer, {INITIAL_STATE} from './reducer';
-import MockAdapter from 'axios-mock-adapter';
-import axios from 'axios';
-import {init} from './actions';
-import mockOffers from '../../mocks/offers';
 
 describe(`App reducer work correctly`, () => {
   it(`App reducer without additional parameters should return initial state`, () => {
@@ -23,19 +19,5 @@ describe(`App reducer work correctly`, () => {
 
   it(`App reducer with reset type should reset state`, () => {
     expect(appReducer(INITIAL_STATE, {type: `RESET`, payload: `test`})).toEqual(INITIAL_STATE);
-  });
-
-
-  it(`Should make a correct API call to /hotels`, () => {
-    const apiMock = new MockAdapter(axios);
-    const dispatch = jest.fn();
-    const getState = jest.fn();
-
-    apiMock.onGet(`/hotels`)
-    .reply(200, [mockOffers[0]]);
-
-    init(dispatch, getState, axios).then(() => {
-      expect(dispatch).toBeCalledTimes(4);
-    });
   });
 });
