@@ -7,9 +7,7 @@ class PlaceCardList extends React.PureComponent {
   }
 
   cardHoverHandler(card) {
-    this
-      .props
-      .onCardHover(card);
+    this.props.onCardHover(card);
     this.props.onSelectActiveElement(card);
   }
 

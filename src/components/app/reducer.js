@@ -7,7 +7,8 @@ export const INITIAL_STATE = {
   activeCard: null,
   actualCities: [],
   isAuthorizationRequired: true,
-  user: {}
+  user: {},
+  availableSorts: [`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`],
 };
 
 export default (state = INITIAL_STATE, action) => {
