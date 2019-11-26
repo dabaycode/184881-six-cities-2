@@ -1,3 +1,5 @@
+import withLayout from '../../hocs/withLayout';
+
 class SignIn extends React.PureComponent {
 
   constructor(props) {
@@ -28,7 +30,6 @@ class SignIn extends React.PureComponent {
         return null;
     }
   }
-
 
   render() {
 
@@ -73,7 +74,7 @@ class SignIn extends React.PureComponent {
 
 }
 
-export default SignIn;
+export default withLayout(SignIn);
 
 SignIn.propTypes = {
   loginSubmitHandler: PropTypes.func.isRequired,

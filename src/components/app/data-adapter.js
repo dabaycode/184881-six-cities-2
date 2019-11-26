@@ -20,7 +20,8 @@ export default (data) => {
       },
       reviews: [],
       near: [],
-      rating: +(item.rating * 100 / 5).toFixed(0)
+      rating: +(item.rating * 100 / 5).toFixed(0),
+      isFavorite: item.is_favorite
     });
   });
 

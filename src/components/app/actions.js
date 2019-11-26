@@ -13,10 +13,6 @@ export const getOffers = (dispatch, getState) => {
   });
 };
 
-export const changeSortType = (option) => ({type: `CHANGE_SORT_TYPE`, payload: option});
-
-export const setActiveCard = (card) => ({type: `SET_ACTIVE_CARD`, payload: card});
-
 export const init = (dispatch, getState, api) => {
   return api
     .get(`/hotels`)

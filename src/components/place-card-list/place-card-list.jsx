@@ -1,4 +1,4 @@
-import PlaceCard from '../place-card/place-card';
+import PlaceCard from '../place-card/place-card.connect';
 import withActiveItem from '../../hocs/withActiveItem';
 
 class PlaceCardList extends React.PureComponent {
@@ -7,9 +7,7 @@ class PlaceCardList extends React.PureComponent {
   }
 
   cardHoverHandler(card) {
-    this
-      .props
-      .onCardHover(card);
+    this.props.onCardHover(card);
     this.props.onSelectActiveElement(card);
   }
 
@@ -47,7 +45,8 @@ class PlaceCardList extends React.PureComponent {
               price,
               rating,
               type,
-              mark
+              mark,
+              isFavorite
             } = item;
 
             return (<PlaceCard
@@ -60,6 +59,7 @@ class PlaceCardList extends React.PureComponent {
               type={type}
               mark={mark}
               isNear={isNear}
+              isFavorite={isFavorite}
               onCardHover={() => this.cardHoverHandler(item)}
               onCardHoverOut={() => this.cardHoverHandler(null)}/>);
           })}

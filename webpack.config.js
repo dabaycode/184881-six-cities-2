@@ -1,5 +1,5 @@
 const path = require(`path`);
-const webpack = require('webpack');
+const webpack = require(`webpack`);
 
 module.exports = {
   entry: `./src/index.js`,
@@ -30,8 +30,8 @@ module.exports = {
       Components: path.resolve(__dirname, `src/components/`)
     },
     modules: [
-        'node_modules',
-        path.resolve(path.join(__dirname, `public`))
+      `node_modules`,
+      path.resolve(path.join(__dirname, `public`))
     ],
     extensions: [`.js`, `.jsx`, `.ts`, `.tsx`, `.webm`]
   },
