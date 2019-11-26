@@ -14,9 +14,9 @@ class PlacesSorting extends React.PureComponent {
   }
 
   _toggleSortOptions() {
-    this.setState({
-      isOptionsOpen: !this.state.isOptionsOpen
-    });
+    this.setState((prevState) => ({
+      isOptionsOpen: !prevState.isOptionsOpen
+    }));
   }
 
   render() {

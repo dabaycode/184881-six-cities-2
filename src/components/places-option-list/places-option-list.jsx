@@ -7,19 +7,19 @@ class PlacesOptionList extends React.PureComponent {
 
   render() {
 
-    const {availableSorts, optionsClickHandler} = this.props;
+    const {isOpen, activeItem, availableSorts, optionsClickHandler, onSelectActiveElement} = this.props;
 
     return (
       <ul
-        className={`places__options places__options--custom ` + (this.props.isOpen && `places__options--opened`)}>
+        className={`places__options places__options--custom ` + (isOpen && `places__options--opened`)}>
         {availableSorts.map((item) => {
           return (
             <li
-              className={`places__option ` + ((this.props.activeItem === item) && `places__option--active`)}
+              className={`places__option ` + ((activeItem === item) && `places__option--active`)}
               tabIndex="0"
               onClick={() => {
                 optionsClickHandler(item);
-                this.props.onSelectActiveElement(item);
+                onSelectActiveElement(item);
               }}
               key={`sort-` + item}>{item}</li>
           );

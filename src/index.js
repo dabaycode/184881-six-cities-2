@@ -8,14 +8,8 @@ const init = () => {
   ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>
-          <App
-            city={null}
-            placeCards={[]}
-            actualCities={[]}
-            cityFilterClickHandler={() => {}}
-            onCardHover={() => {}}/>
+          <App/>
         </BrowserRouter>
-
       </Provider>, document.getElementById(`root`)
   );
 };
