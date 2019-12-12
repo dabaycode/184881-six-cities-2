@@ -1,6 +1,4 @@
-const findCardById = (id, cards) => cards.find((item) => item.id === id);
-
-const getActualCities = (offers) => {
+export const getActualCities = (offers) => {
   const cities = [];
 
   offers.forEach((item) => {
@@ -11,5 +9,3 @@ const getActualCities = (offers) => {
 
   return uniqCities.slice(0, 6);
 };
-
-export {findCardById, getActualCities};

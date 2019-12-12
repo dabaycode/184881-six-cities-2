@@ -2,6 +2,7 @@ import axios from 'axios';
 import store from './store';
 import {changeLoginRequired} from './components/sign-in/actions';
 
+
 const createAPI = () => {
   const api = axios.create({baseURL: `https://htmlacademy-react-2.appspot.com/six-cities`, timeout: 5000, withCredentials: true});
 
