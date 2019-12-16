@@ -2,6 +2,12 @@ import {offersAdapter} from './data-adapter';
 import {getActualCities} from '../../utils';
 import store from '../../store';
 
+const NEAR_CARDS_NUM = 3;
+const FavoriteStatuses = {
+  ADD: 1,
+  REMOVE: 0
+};
+
 export const changeSortType = (option) => ({type: `CHANGE_SORT_TYPE`, payload: option});
 export const changeCity = (city) => ({type: `CHANGE_CITY`, payload: city});
 export const setActiveCard = (card) => ({type: `SET_ACTIVE_CARD`, payload: card});
@@ -13,7 +19,7 @@ export const changeOffers = (offers) => ({
 
 export const changeNearCardsByCurrentCity = () => ({
   type: `SET_NEAR_CARDS`,
-  payload: store.getState().app.initOffers.filter((item) => item.city === store.getState().app.activeCard.city).slice(0, 3)
+  payload: store.getState().app.initOffers.filter((item) => item.city === store.getState().app.activeCard.city).slice(0, NEAR_CARDS_NUM)
 });
 
 export const findActiveCard = (id) => {
@@ -24,10 +30,10 @@ export const changeOffersByCurrentCity = () => changeOffers(store.getState().app
 
 export const changeFavoriteStatus = (dispatch, getState, api, hotelId, status) => {
 
-  let statusCode = 1;
+  let statusCode = FavoriteStatuses.ADD;
 
   if (status) {
-    statusCode = 0;
+    statusCode = FavoriteStatuses.REMOVE;
   }
 
   return api

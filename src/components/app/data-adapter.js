@@ -1,3 +1,7 @@
+const RATING_MAX_STARS = 5;
+const RATING_MAX_PERCENT = 100;
+const RATING_ROUNDING = 0;
+
 export const offersAdapter = (data) => {
   const newData = [];
 
@@ -20,7 +24,7 @@ export const offersAdapter = (data) => {
       },
       reviews: [],
       near: [],
-      rating: +(item.rating * 100 / 5).toFixed(0),
+      rating: +(item.rating * RATING_MAX_PERCENT / RATING_MAX_STARS).toFixed(RATING_ROUNDING),
       isFavorite: item.is_favorite
     });
   });
@@ -53,7 +57,7 @@ export const commentsAdapter = (data) => {
         photo: item.user.avatar_url,
         name: item.user.name
       },
-      rating: +(item.rating * 100 / 5).toFixed(0),
+      rating: +(item.rating * RATING_MAX_PERCENT / RATING_MAX_STARS).toFixed(0),
       text: item.comment,
       date: item.date
     });

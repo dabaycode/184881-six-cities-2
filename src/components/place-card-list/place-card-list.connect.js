@@ -13,9 +13,6 @@ const mapDispatchToProps = (dispatch) => ({
   onCardHover: (card) => {
     dispatch(AppActionCreator.setActiveCard(card));
   },
-  // sortOffets: (type) => {
-  //   dispatch(ActionCreator.sortOffers(type));
-  // }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceCardList);

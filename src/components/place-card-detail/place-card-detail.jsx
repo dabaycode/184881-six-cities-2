@@ -33,6 +33,20 @@ class PlaceCardDetail extends React.PureComponent {
       isAuthorizationRequired
     } = this.props;
 
+    const BookmarkIconSize = {
+      WIDTH: 31,
+      HEIGHT: 33
+    };
+
+    const UserAvatarSize = {
+      WIDTH: 74,
+      HEIGHT: 74
+    };
+
+    const RATING_MAX_STARS = 5;
+    const RATING_MAX_PERCENT = 100;
+    const RATING_ROUNDING = 1;
+
     return (
       <main className="page__main page__main--property">
         <section className="property">
@@ -59,7 +73,7 @@ class PlaceCardDetail extends React.PureComponent {
                   {card.title}
                 </h1>
                 <button className={`property__bookmark-button button ${(card.isFavorite && `property__bookmark-button--active`)}`} type="button" onClick={this._favoriteClickHandler}>
-                  <svg className="property__bookmark-icon place-card__bookmark-icon" width={31} height={33}>
+                  <svg className="property__bookmark-icon place-card__bookmark-icon" width={BookmarkIconSize.WIDTH} height={BookmarkIconSize.HEIGHT}>
                     <use xlinkHref="#icon-bookmark"/>
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
@@ -72,7 +86,7 @@ class PlaceCardDetail extends React.PureComponent {
                   }}/>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{(card.rating / 100 * 5).toFixed(1)}</span>
+                <span className="property__rating-value rating__value">{(card.rating / RATING_MAX_PERCENT * RATING_MAX_STARS).toFixed(RATING_ROUNDING)}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
@@ -115,8 +129,8 @@ class PlaceCardDetail extends React.PureComponent {
                     <img
                       className="property__avatar user__avatar"
                       src="/img/avatar-angelina.jpg"
-                      width={74}
-                      height={74}
+                      width={UserAvatarSize.WIDTH}
+                      height={UserAvatarSize.HEIGHT}
                       alt="Host avatar"/>
                   </div>
                   <span className="property__user-name">
@@ -173,13 +187,15 @@ export default withAuthReqiure(PlaceCardDetail);
 PlaceCardDetail.propTypes = {
   onClickToAuthRequire: PropTypes.func.isRequired,
   isAuthorizationRequired: PropTypes.bool.isRequired,
-  card: PropTypes.shape({
+  changeFavoriteStatus: PropTypes.func.isRequired,
+  initCard: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     mark: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool,
     images: PropTypes
       .arrayOf(PropTypes.string)
       .isRequired,
@@ -205,5 +221,51 @@ PlaceCardDetail.propTypes = {
       adults: PropTypes.number.isRequired,
       options: PropTypes.arrayOf(PropTypes.string.isRequired)
     })
-  })
+  }),
+  card: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    mark: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool,
+    images: PropTypes
+      .arrayOf(PropTypes.string)
+      .isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      user: PropTypes.shape({name: PropTypes.string.isRequired, photo: PropTypes.string.isRequired}),
+      rating: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired
+    })),
+    properties: PropTypes.shape({
+      entire: PropTypes.string.isRequired,
+      bedrooms: PropTypes.number.isRequired,
+      adults: PropTypes.number.isRequired,
+      options: PropTypes.arrayOf(PropTypes.string.isRequired)
+    })
+  }),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    })
+  }),
+  comments: PropTypes.arrayOf(PropTypes.shape({
+    user: PropTypes.shape({name: PropTypes.string.isRequired, photo: PropTypes.string.isRequired}),
+    rating: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired
+  })),
+  nearCards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    mark: PropTypes.string.isRequired,
+    isNear: PropTypes.bool
+  })),
+
 };

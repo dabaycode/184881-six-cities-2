@@ -34,90 +34,69 @@ class ReviewsForm extends React.PureComponent {
   }
 
   render() {
+    const StarImageIcon = {
+      WIDTH: 37,
+      HEIGHT: 33
+    };
+
+    const RatingValues = {
+      PERFECT: 5,
+      GOOD: 4,
+      NOT_BAD: 3,
+      BADLY: 2,
+      TERRIBLY: 1
+    };
+
+    const RatingInputs = [
+      {
+        value: RatingValues.PERFECT,
+        title: `perfect`,
+      },
+      {
+        value: RatingValues.GOOD,
+        title: `good`,
+      },
+      {
+        value: RatingValues.NOT_BAD,
+        title: `not bad`,
+      },
+      {
+        value: RatingValues.BADLY,
+        title: `badly`,
+      },
+      {
+        value: RatingValues.TERRIBLY,
+        title: `terribly`,
+      }
+    ];
+
     return (
       <form className="reviews__form form" action="#" method="post" onSubmit={this.handleSubmit}>
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
-          <input
-            className="form__rating-input visually-hidden"
-            name="rating"
-            defaultValue={5}
-            id="5-stars"
-            type="radio"
-            checked={this.state.rating === 5}
-            onChange={this.handleCheckboxChange}/>
-          <label
-            htmlFor="5-stars"
-            className="reviews__rating-label form__rating-label"
-            title="perfect">
-            <svg className="form__star-image" width={37} height={33}>
-              <use xlinkHref="#icon-star"/>
-            </svg>
-          </label>
-          <input
-            className="form__rating-input visually-hidden"
-            name="rating"
-            defaultValue={4}
-            id="4-stars"
-            type="radio"
-            checked={this.state.rating === 4}
-            onChange={this.handleCheckboxChange}/>
-          <label
-            htmlFor="4-stars"
-            className="reviews__rating-label form__rating-label"
-            title="good">
-            <svg className="form__star-image" width={37} height={33}>
-              <use xlinkHref="#icon-star"/>
-            </svg>
-          </label>
-          <input
-            className="form__rating-input visually-hidden"
-            name="rating"
-            defaultValue={3}
-            id="3-stars"
-            type="radio"
-            checked={this.state.rating === 3}
-            onChange={this.handleCheckboxChange}/>
-          <label
-            htmlFor="3-stars"
-            className="reviews__rating-label form__rating-label"
-            title="not bad">
-            <svg className="form__star-image" width={37} height={33}>
-              <use xlinkHref="#icon-star"/>
-            </svg>
-          </label>
-          <input
-            className="form__rating-input visually-hidden"
-            name="rating"
-            defaultValue={2}
-            id="2-stars"
-            type="radio"
-            checked={this.state.rating === 2}
-            onChange={this.handleCheckboxChange}/>
-          <label
-            htmlFor="2-stars"
-            className="reviews__rating-label form__rating-label"
-            title="badly">
-            <svg className="form__star-image" width={37} height={33}>
-              <use xlinkHref="#icon-star"/>
-            </svg>
-          </label>
-          <input
-            className="form__rating-input visually-hidden"
-            name="rating"
-            defaultValue={1}
-            id="1-star"
-            type="radio"
-            checked={this.state.rating === 1}
-            onChange={this.handleCheckboxChange}/>
-          <label
-            htmlFor="1-star"
-            className="reviews__rating-label form__rating-label"
-            title="terribly">
-            <svg className="form__star-image" width={37} height={33}>
-              <use xlinkHref="#icon-star"/>
-            </svg>
-          </label>
+          {RatingInputs.map((item) => {
+            return (
+              <>
+              <input
+                className="form__rating-input visually-hidden"
+                name="rating"
+                defaultValue={item.value}
+                id={item.value + `-stars`}
+                type="radio"
+                checked={this.state.rating === item.value}
+                onChange={this.handleCheckboxChange}/>
+
+              <label
+                htmlFor={item.value + `-stars`}
+                className="reviews__rating-label form__rating-label"
+                title={item.title}>
+                <svg className="form__star-image" width={StarImageIcon.WIDTH} height={StarImageIcon.HEIGHT}>
+                  <use xlinkHref="#icon-star"/>
+                </svg>
+              </label>
+              </>
+            );
+          })}
         </div>
         <textarea
           className="reviews__textarea form__textarea"

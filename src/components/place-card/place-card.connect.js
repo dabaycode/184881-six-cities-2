@@ -4,7 +4,6 @@ import * as AppActionCreator from '../app/actions';
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   isAuthorizationRequired: state.app.isAuthorizationRequired,
-  // isFavorite: state.app.initOffers.find((item) => item.id === ownProps.id).isFavorite,
 });
 
 const mapDispatchToProps = (dispatch) => ({

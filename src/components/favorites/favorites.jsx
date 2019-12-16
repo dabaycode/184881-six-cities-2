@@ -1,6 +1,7 @@
 import withLayout from '../../hocs/withLayout';
 import PlaceCardList from '../place-card-list/place-card-list';
 
+
 class Favorites extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -13,8 +14,9 @@ class Favorites extends React.PureComponent {
   render() {
 
     const {cards} = this.props;
+    const CARDS_MIN_COUNT = 0;
 
-    if (Object.keys(cards).length === 0) {
+    if (Object.keys(cards).length === CARDS_MIN_COUNT) {
 
       return (
         <main className="page__main page__main--favorites page__main--favorites-empty">
@@ -28,8 +30,6 @@ class Favorites extends React.PureComponent {
             </section>
           </div>
         </main>
-
-
       );
 
     } else {
